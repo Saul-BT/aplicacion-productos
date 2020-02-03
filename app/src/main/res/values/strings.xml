@@ -3,4 +3,9 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="uncompleted_fields_message">Por favor, rellene todos los campos</string>
+
+    <string name="incorrect_login_error">El usuario introducido o la contraseña no son válidos</string>
+    <string name="unknown_login_error">En este momento no se puede verificar la existencia del usuario</string>
 </resources>

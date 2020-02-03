@@ -9,12 +9,14 @@
         <item name="android:windowLightStatusBar">true</item>
     </style>
 
-    <style name="TextField" parent="Widget.AppCompat.EditText">
-        <item name="android:layout_margin">15sp</item>
+    <style name="TextLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="android:layout_margin">10sp</item>
     </style>
 
     <style name="Button" parent="TextAppearance.AppCompat.Widget.Button">
         <item name="android:layout_margin">10sp</item>
+        <item name="android:textColor">@color/buttonForeColor</item>
+        <item name="android:background">@drawable/shape_button</item>
     </style>
 
 </resources>

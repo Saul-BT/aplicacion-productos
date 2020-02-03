@@ -3,21 +3,35 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation"
-    app:startDestination="@id/inicioFragment">
+    app:startDestination="@id/signinFragment">
 
     <fragment
-        android:id="@+id/inicioFragment"
-        android:name="com.example.productmanager.InicioFragment"
-        android:label="fragment_inicio"
-        tools:layout="@layout/fragment_inicio" >
+        android:id="@+id/signinFragment"
+        android:name="com.example.productmanager.SignInFragment"
+        android:label="fragment_signin"
+        tools:layout="@layout/fragment_signin">
         <action
             android:id="@+id/go_to_sign_up"
-            app:destination="@id/registroFragment"
+            app:destination="@id/signupFragment"
+            app:enterAnim="@anim/fragment_fade_enter" />
+        <action
+            android:id="@+id/go_to_products"
+            app:destination="@id/productsFragment"
             app:enterAnim="@anim/fragment_fade_enter" />
     </fragment>
     <fragment
-        android:id="@+id/registroFragment"
-        android:name="com.example.productmanager.RegistroFragment"
-        android:label="fragment_registro"
-        tools:layout="@layout/fragment_registro" />
+        android:id="@+id/signupFragment"
+        android:name="com.example.productmanager.SignUpFragment"
+        android:label="fragment_signup"
+        tools:layout="@layout/fragment_signup" >
+        <action
+            android:id="@+id/go_to_products"
+            app:destination="@id/productsFragment"
+            app:enterAnim="@anim/fragment_fade_enter" />
+    </fragment>
+    <fragment
+        android:id="@+id/productsFragment"
+        android:name="com.example.productmanager.ProductsFragment"
+        android:label="fragment_products"
+        tools:layout="@layout/fragment_products" />
 </navigation>

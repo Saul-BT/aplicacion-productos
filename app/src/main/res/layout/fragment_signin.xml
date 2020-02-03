@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="20sp"
-    tools:context=".InicioFragment">
+    tools:context=".SignInFragment">
 
     <ImageView
         android:id="@+id/imageView"
@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_margin="50dp"
-        android:src="@mipmap/ic_launcher" />
+        android:src="@drawable/ic_logo" />
 
     <TextView
         android:id="@+id/textView"
@@ -25,23 +25,36 @@
         android:text="Inicio de Sesión"
         android:textSize="30sp" />
 
-    <EditText
-        android:id="@+id/editText"
-        style="@style/TextField"
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Nombre de Usuario"
-        android:inputType="textPersonName" />
+        style="@style/TextLayout">
 
-    <EditText
-        android:id="@+id/editText2"
-        style="@style/TextField"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_sign_in_username"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Nombre de Usuario"
+            android:inputType="textPersonName" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Contraseña"
-        android:inputType="textPersonName" />
+        style="@style/TextLayout">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_sign_in_pass"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Contraseña"
+            android:inputType="textPassword" />
+
+    </com.google.android.material.textfield.TextInputLayout>
 
     <CheckBox
         android:id="@+id/checkBox"
