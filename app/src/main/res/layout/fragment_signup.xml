@@ -9,12 +9,12 @@
 
     <TextView
         android:id="@+id/textView2"
+        style="@style/Header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="15sp"
         android:gravity="center"
-        android:text="Registro de Usuario"
-        android:textSize="30sp" />
+        android:text="Registro de Usuario" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
@@ -89,7 +89,7 @@
             android:text="Acepto los " />
 
         <TextView
-            android:id="@+id/tv_link_terminos_y_condiciones"
+            android:id="@+id/tv_link_terms_and_conditions"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"

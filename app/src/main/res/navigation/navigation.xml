@@ -28,10 +28,18 @@
             android:id="@+id/go_to_products"
             app:destination="@id/productsFragment"
             app:enterAnim="@anim/fragment_fade_enter" />
+        <action
+            android:id="@+id/go_to_terms"
+            app:destination="@id/termsFragment" />
     </fragment>
     <fragment
         android:id="@+id/productsFragment"
         android:name="com.example.productmanager.ProductsFragment"
         android:label="fragment_products"
         tools:layout="@layout/fragment_products" />
+    <fragment
+        android:id="@+id/termsFragment"
+        android:name="com.example.productmanager.TermsFragment"
+        android:label="fragment_terms"
+        tools:layout="@layout/fragment_terms" />
 </navigation>

@@ -65,6 +65,13 @@ public class SignUpFragment extends Fragment {
             }
         });
 
+        view.findViewById(R.id.tv_link_terms_and_conditions).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Navigation.findNavController(view).navigate(R.id.go_to_terms);
+            }
+        });
+
         return view;
     }
 

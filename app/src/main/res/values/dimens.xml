@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="product_image_margin">10sp</dimen>
+    <dimen name="product_text_margin">20sp</dimen>
+</resources>
