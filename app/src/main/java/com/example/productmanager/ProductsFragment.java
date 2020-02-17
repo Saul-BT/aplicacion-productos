@@ -60,7 +60,7 @@ public class ProductsFragment extends Fragment {
 
         addProductFab = fragmentView.findViewById(R.id.fab_add_product);
 
-        if (MainActivity.currentUser.getType() == UserType.ADMIN) {
+        if (MainActivity.currentUser.getType().canManageProducts) {
             addProductFab.setVisibility(View.VISIBLE);
             addProductFab.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -70,17 +70,12 @@ public class ProductsFragment extends Fragment {
             });
         }
 
-        List<Product> products = new ArrayList<Product>() {{
-            add(new Product("Leche", null, 3.5f));
-            add(new Product("Huevo", null, 1f));
-            add(new Product("Jamón", null, 50.99f));
-        }};
 
         recyclerView = view.findViewById(R.id.recycler_products);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.addItemDecoration(new DividerItemDecoration(getActivity(), DividerItemDecoration.HORIZONTAL));
 
-        productsAdapter = new AdapterProducts(this, R.layout.product_view, products);
+        //productsAdapter = new AdapterProducts(this, R.layout.product_view, products);
 
         recyclerView.setAdapter(productsAdapter);
     }

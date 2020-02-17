@@ -14,9 +14,9 @@ public class FireManager {
 
     private FireManager() {
         db = FirebaseFirestore.getInstance();
-        dbUsersRef = db.collection("usuarios");
+        dbUsersRef = db.collection("users");
+        dbProductsRef = db.collection("products");
 
-        dbProductsRef = null;
         dbOpinionsRef = null;
     }
 
@@ -28,12 +28,10 @@ public class FireManager {
     }
 
     public void addUser(final User newUser) {
-        dbUsersRef.document(newUser.getUsername()).set(
-            new Object() {
-                public final String realName = newUser.getRealname();
-                public final String email = newUser.getEmail();
-                public final String pass = newUser.getPass();
-                public final UserType type = newUser.getType();
-        });
+        dbUsersRef.document(newUser.getUsername()).set(newUser);
+    }
+
+    public void addProduct(final Product newProduct) {
+        dbProductsRef.document(newProduct.getName()).set(newProduct);
     }
 }

@@ -48,9 +48,7 @@ public class SignUpFragment extends Fragment {
         submitUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                User newUser;
-
-                newUser = new User(
+                User newUser = new User(
                         userName.getText().toString(),
                         realName.getText().toString(),
                         email.getText().toString(),

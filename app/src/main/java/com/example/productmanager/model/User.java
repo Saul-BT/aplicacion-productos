@@ -52,15 +52,4 @@ public class User {
     public String getPass() {
         return pass;
     }
-
-    public void setPass(String pass) {
-        this.pass = pass;
-    }
-
-    public boolean isEmpty() {
-        return username == null
-                && realname == null
-                && email == null
-                && pass == null;
-    }
 }

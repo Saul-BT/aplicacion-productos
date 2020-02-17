@@ -2,11 +2,13 @@ package com.example.productmanager.model;
 
 public class Product {
     private String name;
+    private String code;
     private String description;
     private float price;
 
-    public Product(String name, String description, float price) {
+    public Product(String name, String code, String description, float price) {
         this.name = name;
+        this.code = code;
         this.description = description;
         this.price = price;
     }
@@ -17,6 +19,14 @@ public class Product {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
     }
 
     public String getDescription() {

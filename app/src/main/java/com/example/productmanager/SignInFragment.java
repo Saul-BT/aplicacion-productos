@@ -90,13 +90,7 @@ public class SignInFragment extends Fragment {
                     DocumentSnapshot document = task.getResult();
 
                     if (document.exists() && document.get("pass", String.class).equals(hashedPass)) {
-                        MainActivity.currentUser = new User(
-                                document.getId(),
-                                document.get("realName", String.class),
-                                document.get("email", String.class),
-                                null,
-                                document.get("type", UserType.class)
-                                );
+                        MainActivity.currentUser = document.toObject(User.class);
                         Navigation.findNavController(fragmentView).navigate(R.id.go_to_products);
                     }
                     else
