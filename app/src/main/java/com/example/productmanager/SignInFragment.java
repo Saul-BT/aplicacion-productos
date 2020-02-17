@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.example.productmanager.firebase.FireManager;
 import com.example.productmanager.firebase.User;
+import com.example.productmanager.firebase.UserType;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
@@ -91,6 +92,13 @@ public class SignInFragment extends Fragment {
                     DocumentSnapshot document = task.getResult();
 
                     if (document.exists() && document.get("pass", String.class).equals(hashedPass)) {
+                        MainActivity.currentUser = new User(
+                                document.getId(),
+                                document.get("realName", String.class),
+                                document.get("email", String.class),
+                                null,
+                                document.get("type", UserType.class)
+                                );
                         Navigation.findNavController(fragmentView).navigate(R.id.go_to_products);
                     }
                     else

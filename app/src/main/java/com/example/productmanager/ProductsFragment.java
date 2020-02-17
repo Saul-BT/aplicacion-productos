@@ -1,10 +1,12 @@
 package com.example.productmanager;
 
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -15,6 +17,8 @@ import android.view.ViewGroup;
 
 import com.example.productmanager.adapters.AdapterProducts;
 import com.example.productmanager.firebase.Product;
+import com.example.productmanager.firebase.UserType;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,6 +28,8 @@ import java.util.List;
  * A simple {@link Fragment} subclass.
  */
 public class ProductsFragment extends Fragment {
+
+    private FloatingActionButton addProductFab;
 
     private View fragmentView;
     private RecyclerView recyclerView;
@@ -44,12 +50,25 @@ public class ProductsFragment extends Fragment {
         return view;
     }
 
+    @SuppressLint("RestrictedApi")
     private void setUpComponents(View view) {
         fragmentView = view;
 
         Toolbar barra = fragmentView.findViewById(R.id.toolbar);
         barra.inflateMenu(R.menu.menu_user);
         barra.setTitle(R.string.products_toolbar_title);
+
+        addProductFab = fragmentView.findViewById(R.id.fab_add_product);
+
+        if (MainActivity.currentUser.getType() == UserType.ADMIN) {
+            addProductFab.setVisibility(View.VISIBLE);
+            addProductFab.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Navigation.findNavController(view).navigate(R.id.go_to_add_product);
+                }
+            });
+        }
 
         List<Product> products = new ArrayList<Product>() {{
             add(new Product("Leche", null, 3.5f));

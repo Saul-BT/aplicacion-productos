@@ -61,6 +61,7 @@ public class SignUpFragment extends Fragment {
                 );
 
                 fm.addUser(newUser);
+                MainActivity.currentUser = newUser;
                 Navigation.findNavController(view).navigate(R.id.go_to_products);
             }
         });

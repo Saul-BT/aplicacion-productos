@@ -30,16 +30,27 @@
             app:enterAnim="@anim/fragment_fade_enter" />
         <action
             android:id="@+id/go_to_terms"
-            app:destination="@id/termsFragment" />
+            app:destination="@id/termsFragment"
+            app:enterAnim="@anim/fragment_fade_enter" />
     </fragment>
     <fragment
         android:id="@+id/productsFragment"
         android:name="com.example.productmanager.ProductsFragment"
         android:label="fragment_products"
-        tools:layout="@layout/fragment_products" />
+        tools:layout="@layout/fragment_products" >
+        <action
+            android:id="@+id/go_to_add_product"
+            app:destination="@id/addProductFragment"
+            app:enterAnim="@anim/fragment_fade_enter" />
+    </fragment>
     <fragment
         android:id="@+id/termsFragment"
         android:name="com.example.productmanager.TermsFragment"
         android:label="fragment_terms"
         tools:layout="@layout/fragment_terms" />
+    <fragment
+        android:id="@+id/addProductFragment"
+        android:name="com.example.productmanager.AddProductFragment"
+        android:label="fragment_add_product"
+        tools:layout="@layout/fragment_add_product" />
 </navigation>
