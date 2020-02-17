@@ -16,8 +16,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.productmanager.adapters.AdapterProducts;
-import com.example.productmanager.firebase.Product;
-import com.example.productmanager.firebase.UserType;
+import com.example.productmanager.model.Product;
+import com.example.productmanager.model.UserType;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;

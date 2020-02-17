@@ -12,17 +12,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.example.productmanager.firebase.FireManager;
-import com.example.productmanager.firebase.User;
-import com.example.productmanager.firebase.UserType;
+import com.example.productmanager.model.FireManager;
+import com.example.productmanager.model.User;
+import com.example.productmanager.model.UserType;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.common.base.Charsets;
 import com.google.common.hash.Hashing;
 import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
 
 
 /**

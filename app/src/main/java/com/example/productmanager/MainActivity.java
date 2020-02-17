@@ -2,12 +2,9 @@ package com.example.productmanager;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.graphics.Color;
 import android.os.Bundle;
-import android.view.Window;
 
-import com.example.productmanager.firebase.FireManager;
-import com.example.productmanager.firebase.User;
+import com.example.productmanager.model.User;
 
 public class MainActivity extends AppCompatActivity {
 

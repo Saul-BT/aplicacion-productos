@@ -1,4 +1,4 @@
-package com.example.productmanager.firebase;
+package com.example.productmanager.model;
 
 public class Product {
     private String name;

@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.productmanager.ProductsFragment;
 import com.example.productmanager.R;
-import com.example.productmanager.firebase.Product;
+import com.example.productmanager.model.Product;
 
 import java.util.List;
 

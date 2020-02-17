@@ -11,14 +11,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-import com.example.productmanager.firebase.FireManager;
-import com.example.productmanager.firebase.User;
-import com.example.productmanager.firebase.UserType;
+import com.example.productmanager.model.FireManager;
+import com.example.productmanager.model.User;
+import com.example.productmanager.model.UserType;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.common.base.Charsets;
 import com.google.common.hash.Hashing;
-
-import static java.security.spec.MGF1ParameterSpec.SHA1;
 
 
 /**
