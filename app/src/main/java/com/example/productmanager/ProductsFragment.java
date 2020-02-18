@@ -4,6 +4,7 @@ package com.example.productmanager;
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
@@ -16,9 +17,14 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.productmanager.adapters.AdapterProducts;
+import com.example.productmanager.model.FireManager;
 import com.example.productmanager.model.Product;
 import com.example.productmanager.model.UserType;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,6 +34,8 @@ import java.util.List;
  * A simple {@link Fragment} subclass.
  */
 public class ProductsFragment extends Fragment {
+
+    private FireManager fm = FireManager.getInstance();
 
     private FloatingActionButton addProductFab;
 
@@ -75,8 +83,27 @@ public class ProductsFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.addItemDecoration(new DividerItemDecoration(getActivity(), DividerItemDecoration.HORIZONTAL));
 
-        //productsAdapter = new AdapterProducts(this, R.layout.product_view, products);
-
+        productsAdapter = new AdapterProducts(this, R.layout.product_view, new ArrayList<Product>());
         recyclerView.setAdapter(productsAdapter);
+
+        fm.dbProductsRef.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if (task.isSuccessful()) {
+                    QuerySnapshot result = task.getResult();
+                    List<Product> products = new ArrayList<>();
+
+                    for (QueryDocumentSnapshot document : result) {
+                        products.add(document.toObject(Product.class));
+                    }
+
+                    //productsAdapter = new AdapterProducts(ProductsFragment.this, R.layout.product_view, products);
+                    productsAdapter.setProducts(products);
+                    productsAdapter.notifyDataSetChanged();
+                }
+            }
+        });
+
+
     }
 }

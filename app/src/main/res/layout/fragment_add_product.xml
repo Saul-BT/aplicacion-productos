@@ -74,23 +74,33 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/TextLayout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="2">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/et_add_product_price"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:hint="Precio"
-                    android:inputType="number" />
-
-            </com.google.android.material.textfield.TextInputLayout>
+            <Button
+                android:id="@+id/button"
+                style="@style/Widget.AppCompat.Button.Small"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="@android:color/transparent"
+                android:drawableLeft="@drawable/ic_flip_black_30dp"
+                android:gravity="center"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp" />
 
         </LinearLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/TextLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_add_product_price"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Precio"
+                android:inputType="numberDecimal" />
+
+        </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             style="@style/TextLayout"

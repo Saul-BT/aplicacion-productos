@@ -56,6 +56,10 @@ public class AdapterProducts extends RecyclerView.Adapter<AdapterProducts.Produc
         holder.tvPrice.setText(String.valueOf(holder.product.getPrice()));
     }
 
+    public void setProducts(List<Product> products) {
+        this.products = products;
+    }
+
     @Override
     public int getItemCount() {
         return products.size();
