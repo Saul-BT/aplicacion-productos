@@ -1,12 +1,14 @@
 package com.example.productmanager.model;
 
 public class Product {
+    private String encodedPhoto;
     private String name;
     private String code;
     private String description;
     private float price;
 
-    public Product(String name, String code, String description, float price) {
+    public Product(String encodedPhoto, String name, String code, String description, float price) {
+        this.encodedPhoto = encodedPhoto;
         this.name = name;
         this.code = code;
         this.description = description;
@@ -14,6 +16,14 @@ public class Product {
     }
 
     public Product() { }
+
+    public String getEncodedPhoto() {
+        return encodedPhoto;
+    }
+
+    public void setEncodedPhoto(String encodedPhoto) {
+        this.encodedPhoto = encodedPhoto;
+    }
 
     public String getName() {
         return name;

@@ -1,6 +1,7 @@
 package com.example.productmanager.adapters;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.productmanager.ProductsFragment;
 import com.example.productmanager.R;
+import com.example.productmanager.model.ImageConverter;
 import com.example.productmanager.model.Product;
 
 import java.util.List;
@@ -51,7 +53,9 @@ public class AdapterProducts extends RecyclerView.Adapter<AdapterProducts.Produc
     @Override
     public void onBindViewHolder(@NonNull ProductsHolder holder, int position) {
         holder.product = this.products.get(position);
+        Bitmap decodedPhoto = ImageConverter.convertBase64ToBitmap(holder.product.getEncodedPhoto());
 
+        holder.image.setImageBitmap(decodedPhoto);
         holder.tvName.setText(holder.product.getName());
         holder.tvPrice.setText(String.valueOf(holder.product.getPrice()));
     }
@@ -75,6 +79,7 @@ public class AdapterProducts extends RecyclerView.Adapter<AdapterProducts.Produc
         public ProductsHolder(@NonNull View productView) {
             super(productView);
             this.view = productView;
+            this.image = productView.findViewById(R.id.iv_product_image);
             this.tvName = productView.findViewById(R.id.tv_product_name);
             this.tvPrice = productView.findViewById(R.id.tv_product_price);
         }

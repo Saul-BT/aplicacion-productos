@@ -7,7 +7,7 @@
     android:orientation="vertical">
 
     <ImageView
-        android:id="@+id/im_product_image"
+        android:id="@+id/iv_product_image"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/product_image_margin"
@@ -24,9 +24,9 @@
         android:text="TextView"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/im_product_image"
-        app:layout_constraintStart_toEndOf="@+id/im_product_image"
-        app:layout_constraintTop_toTopOf="@+id/im_product_image" />
+        app:layout_constraintBottom_toBottomOf="@+id/iv_product_image"
+        app:layout_constraintStart_toEndOf="@+id/iv_product_image"
+        app:layout_constraintTop_toTopOf="@+id/iv_product_image" />
 
     <TextView
         android:id="@+id/tv_product_price"

@@ -44,4 +44,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-firestore:21.4.0'
 
     implementation 'com.android.support:multidex:1.0.3'
+
+    implementation 'me.sudar:zxing-orient:2.1.1@aar'
+
 }
