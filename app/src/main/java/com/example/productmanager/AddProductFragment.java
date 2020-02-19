@@ -8,6 +8,7 @@ import android.graphics.Bitmap;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
+import androidx.core.graphics.drawable.RoundedBitmapDrawable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
@@ -60,6 +61,8 @@ public class AddProductFragment extends Fragment {
         productPhoto = view.findViewById(R.id.iv_add_product_photo);
         productDescription = view.findViewById(R.id.et_add_product_description);
 
+        productPhoto.getLayoutParams().height = 400;
+        productPhoto.getLayoutParams().width = 400;
 
         view.findViewById(R.id.fab_take_photo).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -80,7 +83,7 @@ public class AddProductFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Product newProduct = new Product(
-                        ImageConverter.convertBitmapToBase64(bitmapPhoto),
+                        bitmapPhoto != null ? ImageConverter.convertBitmapToBase64(bitmapPhoto) : "",
                         productName.getText().toString(),
                         productCode.getText().toString(),
                         productDescription.getText().toString(),
@@ -112,8 +115,10 @@ public class AddProductFragment extends Fragment {
             }
             case TAKE_PHOTO_REQUEST_CODE: {
                 bitmapPhoto = (Bitmap) data.getExtras().get("data");
+                RoundedBitmapDrawable coolPhoto =
+                        ImageConverter.getCoolBitmapDrawable(bitmapPhoto);
 
-                productPhoto.setImageBitmap(bitmapPhoto);
+                productPhoto.setImageDrawable(coolPhoto);
                 break;
             }
         }

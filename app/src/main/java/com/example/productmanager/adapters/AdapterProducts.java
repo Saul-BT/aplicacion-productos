@@ -2,6 +2,7 @@ package com.example.productmanager.adapters;
 
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
@@ -53,9 +54,18 @@ public class AdapterProducts extends RecyclerView.Adapter<AdapterProducts.Produc
     @Override
     public void onBindViewHolder(@NonNull ProductsHolder holder, int position) {
         holder.product = this.products.get(position);
-        Bitmap decodedPhoto = ImageConverter.convertBase64ToBitmap(holder.product.getEncodedPhoto());
+        String encodedPhoto = holder.product.getEncodedPhoto();
+        Drawable coolPhoto = ctx.getDrawable(R.drawable.preview);
 
-        holder.image.setImageBitmap(decodedPhoto);
+        if (!encodedPhoto.isEmpty()) {
+            Bitmap decodedPhoto = ImageConverter.convertBase64ToBitmap(encodedPhoto);
+            coolPhoto = ImageConverter.getCoolBitmapDrawable(decodedPhoto);
+        }
+
+        holder.image.getLayoutParams().height = 130;
+        holder.image.getLayoutParams().width = 130;
+
+        holder.image.setImageDrawable(coolPhoto);
         holder.tvName.setText(holder.product.getName());
         holder.tvPrice.setText(String.valueOf(holder.product.getPrice()));
     }
