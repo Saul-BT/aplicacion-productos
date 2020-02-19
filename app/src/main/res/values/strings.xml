@@ -16,4 +16,7 @@ Penatibus neque leo id vel potenti accumsan pretium mi blandit aliquet, per cons
 
     <string name="info_scanner">Escanea el codigo de barras o QR</string>
     <string name="price_with_currency">%s €</string>
+    <string name="opinions_title">Opiniones</string>
+    <string name="opinions_not_found">Parece que aún no hay opiniones, sé el primero :D</string>
+    <string name="opinion_input_message">Deja tu opinón</string>
 </resources>
