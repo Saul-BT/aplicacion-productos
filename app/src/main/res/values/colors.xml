@@ -4,6 +4,7 @@
     <color name="colorPrimary">#FAFAFA</color>
     <!--<color name="colorPrimaryDark">#D62C00</color>-->
     <color name="colorPrimaryDark">#FAFAFA</color>
+    <color name="colorSecondary">#353535</color>
     <color name="colorAccent">#000000</color>
 
     <color name="buttonForeColor">#DDDDDD</color>

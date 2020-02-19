@@ -32,6 +32,6 @@ public class FireManager {
     }
 
     public void addProduct(final Product newProduct) {
-        dbProductsRef.document(newProduct.getName()).set(newProduct);
+        dbProductsRef.document(newProduct.getCode()).set(newProduct);
     }
 }

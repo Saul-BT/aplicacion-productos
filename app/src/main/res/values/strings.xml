@@ -15,4 +15,5 @@
 Penatibus neque leo id vel potenti accumsan pretium mi blandit aliquet, per consequat inceptos rhoncus luctus interdum molestie libero egestas sem, natoque nisl scelerisque condimentum mollis magnis parturient quis tortor. Vestibulum ut eu ultricies lobortis ante venenatis donec nibh cras fringilla pretium class, bibendum pulvinar sodales varius torquent penatibus tellus taciti mattis nam inceptos euismod, aliquet luctus eleifend faucibus parturient velit a maecenas sapien porttitor cum. Sociis neque morbi blandit pharetra nunc vel hendrerit litora curae condimentum nisi, ullamcorper integer urna accumsan cursus non himenaeos nibh fusce.</string>
 
     <string name="info_scanner">Escanea el codigo de barras o QR</string>
+    <string name="price_with_currency">%s €</string>
 </resources>

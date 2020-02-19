@@ -3,6 +3,7 @@ package com.example.productmanager.adapters;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.productmanager.ProductsFragment;
@@ -52,7 +54,7 @@ public class AdapterProducts extends RecyclerView.Adapter<AdapterProducts.Produc
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ProductsHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ProductsHolder holder, final int position) {
         holder.product = this.products.get(position);
         String encodedPhoto = holder.product.getEncodedPhoto();
         Drawable coolPhoto = ctx.getDrawable(R.drawable.preview);
@@ -68,6 +70,16 @@ public class AdapterProducts extends RecyclerView.Adapter<AdapterProducts.Produc
         holder.image.setImageDrawable(coolPhoto);
         holder.tvName.setText(holder.product.getName());
         holder.tvPrice.setText(String.valueOf(holder.product.getPrice()));
+
+        holder.view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Bundle bundle = new Bundle();
+                bundle.putParcelable("selectedProduct", products.get(position));
+
+                Navigation.findNavController(view).navigate(R.id.go_to_product_details, bundle);
+            }
+        });
     }
 
     public void setProducts(List<Product> products) {

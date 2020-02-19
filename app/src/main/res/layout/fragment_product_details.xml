@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="20sp"
+    tools:context=".ProductDetailsFragment">
+
+    <ImageView
+        android:id="@+id/iv_product_details_photo"
+        android:layout_width="400px"
+        android:layout_height="400px"
+        android:layout_margin="10sp"
+        android:src="@drawable/preview"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_product_price"
+        style="@style/ProductPriceTag"
+        android:text="100 €"
+        app:layout_constraintStart_toStartOf="@+id/iv_product_details_photo"
+        app:layout_constraintTop_toTopOf="@+id/iv_product_details_photo" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="20sp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_product_price">
+
+        <TextView
+            android:id="@+id/tv_product_name"
+            style="@style/Header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Product name" />
+
+        <TextView
+            android:id="@+id/tv_product_code"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10sp"
+            android:layout_marginBottom="20sp"
+            android:text="045695034521" />
+
+        <TextView
+            android:id="@+id/tv_product_description"
+            style="@style/Paragraph"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Lorem ipsum dolor sit amet." />
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

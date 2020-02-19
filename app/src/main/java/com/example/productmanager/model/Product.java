@@ -1,6 +1,9 @@
 package com.example.productmanager.model;
 
-public class Product {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class Product implements Parcelable {
     private String encodedPhoto;
     private String name;
     private String code;
@@ -56,4 +59,38 @@ public class Product {
     public void setPrice(float price) {
         this.price = price;
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(this.encodedPhoto);
+        dest.writeString(this.name);
+        dest.writeString(this.code);
+        dest.writeString(this.description);
+        dest.writeFloat(this.price);
+    }
+
+    protected Product(Parcel in) {
+        this.encodedPhoto = in.readString();
+        this.name = in.readString();
+        this.code = in.readString();
+        this.description = in.readString();
+        this.price = in.readFloat();
+    }
+
+    public static final Parcelable.Creator<Product> CREATOR = new Parcelable.Creator<Product>() {
+        @Override
+        public Product createFromParcel(Parcel source) {
+            return new Product(source);
+        }
+
+        @Override
+        public Product[] newArray(int size) {
+            return new Product[size];
+        }
+    };
 }

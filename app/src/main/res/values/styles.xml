@@ -24,4 +24,22 @@
         <item name="android:textSize">30sp</item>
     </style>
 
+    <style name="Paragraph">
+        <item name="android:textColor">@color/colorSecondary</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="ProductPriceTag">
+        <item name="android:paddingTop">10sp</item>
+        <item name="android:paddingRight">20sp</item>
+        <item name="android:paddingBottom">10sp</item>
+        <item name="android:paddingLeft">20sp</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginLeft">300px</item>
+        <item name="android:layout_marginTop">330px</item>
+        <item name="android:textColor">#FAFAFAFF</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:background">@drawable/shape_accent</item>
+    </style>
 </resources>

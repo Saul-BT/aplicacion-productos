@@ -42,6 +42,10 @@
             android:id="@+id/go_to_add_product"
             app:destination="@id/addProductFragment"
             app:enterAnim="@anim/fragment_fade_enter" />
+        <action
+            android:id="@+id/go_to_product_details"
+            app:destination="@id/productDetailsFragment"
+            app:enterAnim="@anim/fragment_fade_enter" />
     </fragment>
     <fragment
         android:id="@+id/termsFragment"
@@ -53,4 +57,9 @@
         android:name="com.example.productmanager.AddProductFragment"
         android:label="fragment_add_product"
         tools:layout="@layout/fragment_add_product" />
+    <fragment
+        android:id="@+id/productDetailsFragment"
+        android:name="com.example.productmanager.ProductDetailsFragment"
+        android:label="fragment_product_details"
+        tools:layout="@layout/fragment_product_details" />
 </navigation>

@@ -61,9 +61,6 @@ public class AddProductFragment extends Fragment {
         productPhoto = view.findViewById(R.id.iv_add_product_photo);
         productDescription = view.findViewById(R.id.et_add_product_description);
 
-        productPhoto.getLayoutParams().height = 400;
-        productPhoto.getLayoutParams().width = 400;
-
         view.findViewById(R.id.fab_take_photo).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
