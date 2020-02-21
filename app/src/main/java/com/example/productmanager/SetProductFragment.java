@@ -29,7 +29,7 @@ import me.sudar.zxingorient.ZxingOrientResult;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class AddProductFragment extends Fragment {
+public class SetProductFragment extends Fragment {
 
     ZxingOrient codeScanner;
     private FireManager fm = FireManager.getInstance();
@@ -40,7 +40,7 @@ public class AddProductFragment extends Fragment {
 
     private final int TAKE_PHOTO_REQUEST_CODE = 100;
 
-    public AddProductFragment() {
+    public SetProductFragment() {
         // Required empty public constructor
     }
 
@@ -49,7 +49,7 @@ public class AddProductFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_add_product, container, false);
+        View view = inflater.inflate(R.layout.fragment_set_product, container, false);
         codeScanner = new ZxingOrient(this);
         codeScanner.setToolbarColor(getString(R.color.colorAccent))
                    .setInfoBoxColor(getString(R.color.colorAccent))
@@ -60,6 +60,20 @@ public class AddProductFragment extends Fragment {
         productPrice = view.findViewById(R.id.et_add_product_price);
         productPhoto = view.findViewById(R.id.iv_add_product_photo);
         productDescription = view.findViewById(R.id.et_add_product_description);
+
+        if (getArguments() != null) {
+            Product productToEdit = getArguments().getParcelable("productToEdit");
+
+            productName.setText(productToEdit.getName());
+            productCode.setText(productToEdit.getCode());
+            productPrice.setText(String.valueOf(productToEdit.getPrice()));
+            productDescription.setText(productToEdit.getDescription());
+
+            if (!productToEdit.getEncodedPhoto().isEmpty()) {
+                bitmapPhoto = ImageConverter.convertBase64ToBitmap(productToEdit.getEncodedPhoto());
+                productPhoto.setImageDrawable(ImageConverter.getCoolBitmapDrawable(bitmapPhoto));
+            }
+        }
 
         view.findViewById(R.id.fab_take_photo).setOnClickListener(new View.OnClickListener() {
             @Override

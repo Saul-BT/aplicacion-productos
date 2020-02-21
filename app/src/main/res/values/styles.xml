@@ -42,4 +42,12 @@
         <item name="android:textSize">24sp</item>
         <item name="android:background">@drawable/shape_accent</item>
     </style>
+
+    <style name="SimpleActionButton" parent="@style/Widget.AppCompat.Button.Small">
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:gravity">center</item>
+        <item name="android:paddingLeft">20dp</item>
+        <item name="android:paddingRight">20dp</item>
+        <item name="android:stateListAnimator">@null</item>
+    </style>
 </resources>

@@ -25,6 +25,7 @@
         app:layout_constraintTop_toTopOf="@+id/iv_product_details_photo" />
 
     <LinearLayout
+        android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_margin="20sp"
@@ -100,4 +101,31 @@
         </LinearLayout>
 
     </LinearLayout>
+
+    <Button
+        android:id="@+id/b_edit_product"
+        style="@style/SimpleActionButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableRight="@drawable/ic_edit_black_30dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/b_delete_product"
+        app:layout_constraintEnd_toStartOf="@+id/iv_product_details_photo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/iv_product_details_photo" />
+
+    <Button
+        android:id="@+id/b_delete_product"
+        style="@style/SimpleActionButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableRight="@drawable/ic_delete_black_30dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_product_details_photo"
+        app:layout_constraintEnd_toStartOf="@+id/iv_product_details_photo"
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

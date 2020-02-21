@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="20sp"
-    tools:context=".AddProductFragment">
+    tools:context=".SetProductFragment">
 
     <ImageView
         android:id="@+id/iv_add_product_photo"
@@ -76,14 +76,10 @@
 
             <Button
                 android:id="@+id/b_scan_code"
-                style="@style/Widget.AppCompat.Button.Small"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:background="@android:color/transparent"
+                style="@style/SimpleActionButton"
                 android:drawableLeft="@drawable/ic_flip_black_30dp"
-                android:gravity="center"
-                android:paddingLeft="20dp"
-                android:paddingRight="20dp" />
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent" />
 
         </LinearLayout>
 

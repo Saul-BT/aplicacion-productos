@@ -19,7 +19,6 @@ import android.view.ViewGroup;
 import com.example.productmanager.adapters.AdapterProducts;
 import com.example.productmanager.model.FireManager;
 import com.example.productmanager.model.Product;
-import com.example.productmanager.model.UserType;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -73,7 +72,7 @@ public class ProductsFragment extends Fragment {
             addProductFab.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Navigation.findNavController(view).navigate(R.id.go_to_add_product);
+                    Navigation.findNavController(view).navigate(R.id.go_to_set_product);
                 }
             });
         }
