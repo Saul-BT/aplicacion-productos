@@ -84,7 +84,7 @@ public class ProductDetailsFragment extends Fragment {
             deleteProduct.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    fm.dbProductsRef.document(selectedProduct.getName()).delete();
+                    fm.dbProductsRef.document(selectedProduct.getCode()).delete();
                     Navigation.findNavController(view).popBackStack();
                 }
             });
