@@ -61,6 +61,11 @@ public class Product implements Parcelable {
     }
 
     @Override
+    public int hashCode() {
+        return this.code.hashCode();
+    }
+
+    @Override
     public int describeContents() {
         return 0;
     }

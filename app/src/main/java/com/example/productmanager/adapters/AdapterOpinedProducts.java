@@ -19,7 +19,9 @@ import com.example.productmanager.R;
 import com.example.productmanager.model.ImageConverter;
 import com.example.productmanager.model.Product;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 public class AdapterOpinedProducts extends RecyclerView.Adapter<AdapterOpinedProducts.ProductsHolder> {
 
@@ -78,8 +80,8 @@ public class AdapterOpinedProducts extends RecyclerView.Adapter<AdapterOpinedPro
         });
     }
 
-    public void setProducts(List<Product> products) {
-        this.products = products;
+    public void addProduct(Product products) {
+        this.products.add(products);
     }
 
     @Override

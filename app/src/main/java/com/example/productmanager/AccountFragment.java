@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.provider.DocumentsContract;
 import android.util.DisplayMetrics;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
@@ -22,11 +23,16 @@ import com.example.productmanager.model.FireManager;
 import com.example.productmanager.model.Product;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.firestore.model.Document;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 
 /**
@@ -78,24 +84,44 @@ public class AccountFragment extends Fragment {
         );
         recyclerOpinedProducts.setAdapter(adapterOpinedProducts);
 
-        fm.dbProductsRef.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+        fm.dbOpinionsRef.whereEqualTo("userRef", fm.dbUsersRef.document(MainActivity.currentUser.getUsername()))
+                .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 if (task.isSuccessful()) {
                     QuerySnapshot result = task.getResult();
-                    List<Product> products = new ArrayList<>();
 
                     for (QueryDocumentSnapshot document : result) {
-                        products.add(document.toObject(Product.class));
+                        ((DocumentReference) document.get("productRef"))
+                                .get().addOnCompleteListener(addProductsToAdapter());
                     }
-
-                    adapterOpinedProducts.setProducts(products);
-                    adapterOpinedProducts.notifyDataSetChanged();
                 }
             }
         });
 
         return view;
+    }
+
+    private OnCompleteListener<DocumentSnapshot> addProductsToAdapter() {
+        final Set<Product> products = new HashSet<>();
+
+        return new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                DocumentSnapshot document = task.getResult();
+
+                if (document.exists()) {
+                    Product opinedProduct = document.toObject(Product.class);
+
+                    if (!products.contains(opinedProduct)) {
+                        products.add(opinedProduct);
+                        adapterOpinedProducts.addProduct(opinedProduct);
+                        adapterOpinedProducts.notifyItemChanged(
+                                adapterOpinedProducts.getItemCount() - 1);
+                    }
+                }
+            }
+        };
     }
 
     private int getResponsiveSpan() {
