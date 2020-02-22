@@ -1,39 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:padding="20sp"
     tools:context=".ProductDetailsFragment">
 
-    <ImageView
-        android:id="@+id/iv_product_details_photo"
-        android:layout_width="400px"
-        android:layout_height="400px"
-        android:layout_margin="10sp"
-        android:src="@drawable/preview"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/tv_product_price"
-        style="@style/ProductPriceTag"
-        android:text="100 €"
-        app:layout_constraintStart_toStartOf="@+id/iv_product_details_photo"
-        app:layout_constraintTop_toTopOf="@+id/iv_product_details_photo" />
-
     <LinearLayout
-        android:id="@+id/linearLayout2"
+        android:id="@+id/product_details_head"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_margin="20sp"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_product_price">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:context=".ProductDetailsFragment">
+
+            <ImageView
+                android:id="@+id/iv_product_details_photo"
+                android:layout_width="400px"
+                android:layout_height="400px"
+                android:layout_margin="10sp"
+                android:src="@drawable/preview"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_product_price"
+                style="@style/ProductPriceTag"
+                android:text="100 €"
+                app:layout_constraintStart_toStartOf="@+id/iv_product_details_photo"
+                app:layout_constraintTop_toTopOf="@+id/iv_product_details_photo" />
+
+            <Button
+                android:id="@+id/b_edit_product"
+                style="@style/SimpleActionButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableRight="@drawable/ic_edit_black_30dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:visibility="gone"
+                app:layout_constraintBottom_toTopOf="@+id/b_delete_product"
+                app:layout_constraintEnd_toStartOf="@+id/iv_product_details_photo"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/iv_product_details_photo" />
+
+            <Button
+                android:id="@+id/b_delete_product"
+                style="@style/SimpleActionButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableRight="@drawable/ic_delete_black_30dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@+id/iv_product_details_photo"
+                app:layout_constraintEnd_toStartOf="@+id/iv_product_details_photo"
+                app:layout_constraintStart_toStartOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <TextView
             android:id="@+id/tv_product_name"
@@ -56,77 +85,66 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Lorem ipsum dolor sit amet." />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20sp"
+        android:orientation="horizontal">
 
         <TextView
             android:id="@+id/tv_opinions_title"
             style="@style/Header"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20sp"
+            android:layout_weight="1"
             android:text="@string/opinions_title" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyler_opinions"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
+        <ImageButton
+            android:id="@+id/ib_expand_opinions"
+            style="@style/SimpleActionButton"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
-
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/TextLayout"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/et_opinion_message_send"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:hint="@string/opinion_input_message"
-                    android:inputType="textPersonName" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/fab_send_opinion"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:clickable="true"
-                android:src="@drawable/ic_send_white_24dp" />
-        </LinearLayout>
-
+            android:layout_gravity="bottom"
+            android:layout_weight="1"
+            android:src="@drawable/ic_fullscreen_black_30dp" />
     </LinearLayout>
 
-    <Button
-        android:id="@+id/b_edit_product"
-        style="@style/SimpleActionButton"
-        android:layout_width="wrap_content"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyler_opinions"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:drawableRight="@drawable/ic_edit_black_30dp"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:visibility="gone"
-        app:layout_constraintBottom_toTopOf="@+id/b_delete_product"
-        app:layout_constraintEnd_toStartOf="@+id/iv_product_details_photo"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/iv_product_details_photo" />
+        android:layout_weight="1" />
 
-    <Button
-        android:id="@+id/b_delete_product"
-        style="@style/SimpleActionButton"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:drawableRight="@drawable/ic_delete_black_30dp"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="@+id/iv_product_details_photo"
-        app:layout_constraintEnd_toStartOf="@+id/iv_product_details_photo"
-        app:layout_constraintStart_toStartOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/TextLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_opinion_message_send"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/opinion_input_message"
+                android:inputType="textPersonName" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_send_opinion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:src="@drawable/ic_send_white_24dp" />
+    </LinearLayout>
+
+</LinearLayout>

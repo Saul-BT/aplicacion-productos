@@ -2,6 +2,7 @@ package com.example.productmanager;
 
 
 import android.graphics.Bitmap;
+import android.opengl.Visibility;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -15,7 +16,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.productmanager.adapters.AdapterOpinions;
@@ -46,7 +49,10 @@ public class ProductDetailsFragment extends Fragment {
     private RecyclerView recyclerView;
     private AdapterOpinions opinionsAdapter;
     private ImageView productPhoto;
-    private TextView productName, productCode, productPrice, productDescription;
+    private LinearLayout detailsHead;
+    private TextView productName, productCode, productPrice, productDescription, etMessage;
+    private ImageView ivSetDetailsHeadVisibility;
+    private boolean isDetailsHeadVisible;
 
     private DecimalFormat df = new DecimalFormat("###.#");
 
@@ -60,6 +66,11 @@ public class ProductDetailsFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_product_details, container, false);
         selectedProduct = getArguments().getParcelable("selectedProduct");
+
+        isDetailsHeadVisible = true;
+        ivSetDetailsHeadVisibility = view.findViewById(R.id.ib_expand_opinions);
+        detailsHead = view.findViewById(R.id.product_details_head);
+        etMessage = view.findViewById(R.id.et_opinion_message_send);
 
         productName = view.findViewById(R.id.tv_product_name);
         productCode = view.findViewById(R.id.tv_product_code);
@@ -108,7 +119,29 @@ public class ProductDetailsFragment extends Fragment {
             }
         });
 
-        final TextInputEditText etMessage = view.findViewById(R.id.et_opinion_message_send);
+        ivSetDetailsHeadVisibility.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int visibility;
+
+                if (isDetailsHeadVisible) {
+                    visibility = View.GONE;
+                    isDetailsHeadVisible = false;
+                    ivSetDetailsHeadVisibility.setImageDrawable(
+                            getActivity().getDrawable(R.drawable.ic_fullscreen_exit_black_30dp)
+                    );
+                }
+                else {
+                    visibility = View.VISIBLE;
+                    isDetailsHeadVisible = true;
+                    ivSetDetailsHeadVisibility.setImageDrawable(
+                            getActivity().getDrawable(R.drawable.ic_fullscreen_black_30dp)
+                    );
+                }
+
+                detailsHead.setVisibility(visibility);
+            }
+        });
 
         view.findViewById(R.id.fab_send_opinion).setOnClickListener(new View.OnClickListener() {
             @Override
