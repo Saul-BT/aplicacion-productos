@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="@dimen/main_layout_padding"
+    tools:context=".AccountFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <TextView
+        style="@style/Header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5sp"
+        android:text="@string/my_account_header" />
+
+    <TextView
+        android:id="@+id/tv_account_realname"
+        style="@style/Paragraph"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Real name: Carlota Flores de Dios" />
+
+    <TextView
+        android:id="@+id/tv_account_email"
+        style="@style/Paragraph"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Email: carlotita@ohlala.com" />
+
+    <TextView
+        android:id="@+id/tv_account_opined_products"
+        style="@style/SubHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15sp"
+        android:text="Hi carlotaflores97, here are the products in which you have opined:" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_opined_products"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="3" />
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nsv_other_accounts"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="2"
+        android:fillViewport="true"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView11"
+                style="@style/Header"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10sp"
+                android:text="@string/other_accounts_header" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_users"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</LinearLayout>

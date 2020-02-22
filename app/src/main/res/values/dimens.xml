@@ -3,4 +3,7 @@
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="product_image_margin">10sp</dimen>
     <dimen name="product_text_margin">20sp</dimen>
+    <dimen name="main_layout_padding">20sp</dimen>
+    <dimen name="list_product_image_size">130px</dimen> <!-- 130 x 130 -->
+    <dimen name="grid_product_image_margin">10sp</dimen>
 </resources>

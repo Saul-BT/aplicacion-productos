@@ -2,13 +2,11 @@ package com.example.productmanager;
 
 
 import android.graphics.Bitmap;
-import android.opengl.Visibility;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
-import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -16,7 +14,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -28,7 +25,6 @@ import com.example.productmanager.model.Opinion;
 import com.example.productmanager.model.Product;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
@@ -81,7 +77,7 @@ public class ProductDetailsFragment extends Fragment {
         productName.setText(selectedProduct.getName());
         productCode.setText(selectedProduct.getCode());
         productPrice.setText(getString(
-                R.string.price_with_currency,
+                R.string.price_with_currency_template,
                 df.format(selectedProduct.getPrice())));
         productDescription.setText(selectedProduct.getDescription());
 

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="20sp"
+    android:padding="@dimen/main_layout_padding"
     tools:context=".SignInFragment">
 
     <ImageView
@@ -26,9 +26,9 @@
         android:text="Inicio de Sesión" />
 
     <com.google.android.material.textfield.TextInputLayout
+        style="@style/TextLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        style="@style/TextLayout">
+        android:layout_height="wrap_content">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/et_sign_in_username"
@@ -42,9 +42,9 @@
 
 
     <com.google.android.material.textfield.TextInputLayout
+        style="@style/TextLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        style="@style/TextLayout">
+        android:layout_height="wrap_content">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/et_sign_in_pass"

@@ -9,6 +9,7 @@
         app:actionViewClass="android.widget.SearchView"
         app:showAsAction="ifRoom"/>
     <item
+        android:id="@+id/mi_account"
         android:icon="@drawable/ic_account_circle_black_24dp"
         app:showAsAction="ifRoom" />
 </menu>

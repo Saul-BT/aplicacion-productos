@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -58,12 +59,20 @@ public class ProductsFragment extends Fragment {
     }
 
     @SuppressLint("RestrictedApi")
-    private void setUpComponents(View view) {
+    private void setUpComponents(final View view) {
         fragmentView = view;
 
-        Toolbar barra = fragmentView.findViewById(R.id.toolbar);
-        barra.inflateMenu(R.menu.menu_user);
-        barra.setTitle(R.string.products_toolbar_title);
+        Toolbar toolbar = fragmentView.findViewById(R.id.toolbar);
+        toolbar.inflateMenu(R.menu.menu_user);
+        toolbar.setTitle(R.string.products_toolbar_title);
+
+        toolbar.getMenu().findItem(R.id.mi_account).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem menuItem) {
+                Navigation.findNavController(view).navigate(R.id.go_to_account);
+                return true;
+            }
+        });
 
         addProductFab = fragmentView.findViewById(R.id.fab_add_product);
 

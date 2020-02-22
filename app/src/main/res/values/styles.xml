@@ -24,9 +24,14 @@
         <item name="android:textSize">30sp</item>
     </style>
 
+    <style name="SubHeader">
+        <item name="android:textColor">@android:color/secondary_text_light</item>
+        <item name="android:textSize">22sp</item>
+    </style>
+
     <style name="Paragraph">
         <item name="android:textColor">@color/colorSecondary</item>
-        <item name="android:textSize">20sp</item>
+        <item name="android:textSize">18sp</item>
     </style>
 
     <style name="ProductPriceTag">

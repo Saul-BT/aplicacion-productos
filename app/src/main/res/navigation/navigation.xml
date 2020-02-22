@@ -46,6 +46,10 @@
             android:id="@+id/go_to_product_details"
             app:destination="@id/productDetailsFragment"
             app:enterAnim="@anim/fragment_fade_enter" />
+        <action
+            android:id="@+id/go_to_account"
+            app:destination="@id/accountFragment"
+            app:enterAnim="@anim/fragment_fade_enter" />
     </fragment>
     <fragment
         android:id="@+id/termsFragment"
@@ -65,6 +69,16 @@
         <action
             android:id="@+id/go_to_set_product"
             app:destination="@id/addProductFragment"
+            app:enterAnim="@anim/fragment_fade_enter" />
+    </fragment>
+    <fragment
+        android:id="@+id/accountFragment"
+        android:name="com.example.productmanager.AccountFragment"
+        android:label="fragment_account"
+        tools:layout="@layout/fragment_account" >
+        <action
+            android:id="@+id/go_to_product_details"
+            app:destination="@id/productDetailsFragment"
             app:enterAnim="@anim/fragment_fade_enter" />
     </fragment>
 </navigation>

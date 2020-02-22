@@ -15,20 +15,19 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.productmanager.ProductsFragment;
 import com.example.productmanager.R;
 import com.example.productmanager.model.ImageConverter;
 import com.example.productmanager.model.Product;
 
 import java.util.List;
 
-public class AdapterProducts extends RecyclerView.Adapter<AdapterProducts.ProductsHolder> {
+public class AdapterOpinedProducts extends RecyclerView.Adapter<AdapterOpinedProducts.ProductsHolder> {
 
     private int resId;
     private Context ctx;
     private List<Product> products;
 
-    public AdapterProducts(Context ctx, int resId, List<Product> products) {
+    public AdapterOpinedProducts(Context ctx, int resId, List<Product> products) {
         this.resId = resId;
         this.products = products;
         this.ctx = ctx;
@@ -36,13 +35,13 @@ public class AdapterProducts extends RecyclerView.Adapter<AdapterProducts.Produc
 
     @NonNull
     @Override
-    public ProductsHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        ProductsHolder holder = null;
+    public AdapterOpinedProducts.ProductsHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        AdapterOpinedProducts.ProductsHolder holder = null;
 
         try {
             View view = ((AppCompatActivity) ctx).getLayoutInflater()
                     .inflate(this.resId, parent, false);
-            holder = new ProductsHolder(view);
+            holder = new AdapterOpinedProducts.ProductsHolder(view);
         }
         catch (Exception e) {
             Log.i("Informacion", e.getMessage());
@@ -52,7 +51,7 @@ public class AdapterProducts extends RecyclerView.Adapter<AdapterProducts.Produc
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ProductsHolder holder, final int position) {
+    public void onBindViewHolder(@NonNull AdapterOpinedProducts.ProductsHolder holder, final int position) {
         holder.product = this.products.get(position);
         String encodedPhoto = holder.product.getEncodedPhoto();
         Drawable coolPhoto = ctx.getDrawable(R.drawable.preview);
@@ -67,8 +66,6 @@ public class AdapterProducts extends RecyclerView.Adapter<AdapterProducts.Produc
         holder.image.getLayoutParams().width = productImageSize;
 
         holder.image.setImageDrawable(coolPhoto);
-        holder.tvName.setText(holder.product.getName());
-        holder.tvPrice.setText(String.valueOf(holder.product.getPrice()));
 
         holder.view.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -93,16 +90,12 @@ public class AdapterProducts extends RecyclerView.Adapter<AdapterProducts.Produc
     class ProductsHolder extends RecyclerView.ViewHolder {
         public View view;
         public ImageView image;
-        public TextView tvName;
-        public TextView tvPrice;
         public Product product;
 
         public ProductsHolder(@NonNull View productView) {
             super(productView);
             this.view = productView;
-            this.image = productView.findViewById(R.id.iv_product_image);
-            this.tvName = productView.findViewById(R.id.tv_product_name);
-            this.tvPrice = productView.findViewById(R.id.tv_product_price);
+            this.image = productView.findViewById(R.id.iv_opined_product_image);
         }
     }
 }
