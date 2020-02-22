@@ -15,11 +15,13 @@ import androidx.navigation.Navigation;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 
 import com.example.productmanager.model.FireManager;
 import com.example.productmanager.model.ImageConverter;
 import com.example.productmanager.model.Product;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.textfield.TextInputEditText;
 
 import me.sudar.zxingorient.ZxingOrient;
@@ -37,6 +39,8 @@ public class SetProductFragment extends Fragment {
     private Bitmap bitmapPhoto;
     private ImageView productPhoto;
     private TextInputEditText productName, productCode, productPrice, productDescription;
+    private Button bScanCode, bAddProduct;
+    private FloatingActionButton fabTakePhoto;
 
     private final int TAKE_PHOTO_REQUEST_CODE = 100;
 
@@ -55,6 +59,10 @@ public class SetProductFragment extends Fragment {
                    .setInfoBoxColor(getString(R.color.colorAccent))
                    .setInfo(getString(R.string.info_scanner));
 
+        bScanCode = view.findViewById(R.id.b_scan_code);
+        bAddProduct = view.findViewById(R.id.b_add_product);
+        fabTakePhoto = view.findViewById(R.id.fab_take_photo);
+
         productName = view.findViewById(R.id.et_add_product_name);
         productCode = view.findViewById(R.id.et_add_product_code);
         productPrice = view.findViewById(R.id.et_add_product_price);
@@ -69,13 +77,16 @@ public class SetProductFragment extends Fragment {
             productPrice.setText(String.valueOf(productToEdit.getPrice()));
             productDescription.setText(productToEdit.getDescription());
 
+            bScanCode.setEnabled(false);
+            productCode.setEnabled(false);
+
             if (!productToEdit.getEncodedPhoto().isEmpty()) {
                 bitmapPhoto = ImageConverter.convertBase64ToBitmap(productToEdit.getEncodedPhoto());
                 productPhoto.setImageDrawable(ImageConverter.getCoolBitmapDrawable(bitmapPhoto));
             }
         }
 
-        view.findViewById(R.id.fab_take_photo).setOnClickListener(new View.OnClickListener() {
+        fabTakePhoto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent takePhoto = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
@@ -83,14 +94,14 @@ public class SetProductFragment extends Fragment {
             }
         });
 
-        view.findViewById(R.id.b_scan_code).setOnClickListener(new View.OnClickListener() {
+        bScanCode.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 codeScanner.initiateScan();
             }
         });
 
-        view.findViewById(R.id.b_add_product).setOnClickListener(new View.OnClickListener() {
+        bAddProduct.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Product newProduct = new Product(
