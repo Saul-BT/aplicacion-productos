@@ -1,6 +1,8 @@
 package com.example.productmanager.model;
 
+import com.example.productmanager.MainActivity;
 import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 public class FireManager {
@@ -16,8 +18,7 @@ public class FireManager {
         db = FirebaseFirestore.getInstance();
         dbUsersRef = db.collection("users");
         dbProductsRef = db.collection("products");
-
-        dbOpinionsRef = null;
+        dbOpinionsRef = db.collection("opinions");
     }
 
     public static FireManager getInstance() {
@@ -33,5 +34,15 @@ public class FireManager {
 
     public void addProduct(final Product newProduct) {
         dbProductsRef.document(newProduct.getCode()).set(newProduct);
+    }
+
+    public void addOpinion(final Product product, final Opinion opinion) {
+        fm.dbOpinionsRef.document().set(new Object() {
+            public DocumentReference userRef = fm.dbUsersRef.document(MainActivity.currentUser.getUsername());
+            public DocumentReference productRef = fm.dbProductsRef.document(product.getCode());
+            public String date = opinion.getDate();
+            public String author = opinion.getAuthor();
+            public String message = opinion.getMessage();
+        });
     }
 }

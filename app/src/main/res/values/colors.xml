@@ -9,4 +9,7 @@
 
     <color name="buttonForeColor">#DDDDDD</color>
     <color name="buttonBackColor">#000000</color>
+
+    <color name="messageBackColor">#CFCFCF</color>
+    <color name="messageMineBackColor">#A7A7A7</color>
 </resources>

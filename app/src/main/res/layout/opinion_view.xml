@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/opinion_container"
+        style="@style/OpinionContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_opinion_message"
+            style="@style/OpinionMessage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Pues que quieres que te diga, el producto este es una puta mierda, a veh kuando saca esta empresa un pructo medio desentee!!!"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_opinion_author"
+            style="@style/OpinionAuthor"
+            android:text="juanCarlos101"
+            app:layout_constraintBottom_toTopOf="@+id/tv_opinion_message"
+            app:layout_constraintEnd_toEndOf="@+id/tv_opinion_message"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingRight="15sp"
+            android:text="──"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_opinion_author"
+            app:layout_constraintEnd_toStartOf="@+id/tv_opinion_author"
+            app:layout_constraintTop_toTopOf="@+id/tv_opinion_author"
+            app:layout_constraintVertical_bias="0.6" />
+
+        <TextView
+            android:id="@+id/textView7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="15sp"
+            android:text="──"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_opinion_author"
+            app:layout_constraintStart_toEndOf="@+id/tv_opinion_author"
+            app:layout_constraintTop_toTopOf="@+id/tv_opinion_author"
+            app:layout_constraintVertical_bias="0.6" />
+
+        <TextView
+            android:id="@+id/tv_opinion_date"
+            style="@style/OpinionDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="07/11/2017"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

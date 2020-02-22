@@ -50,4 +50,31 @@
         <item name="android:paddingRight">20dp</item>
         <item name="android:stateListAnimator">@null</item>
     </style>
+
+    <style name="OpinionContainer">
+        <!--<item name="android:paddingTop">10sp</item>
+        <item name="android:paddingRight">20sp</item>
+        <item name="android:paddingBottom">20sp</item>
+        <item name="android:paddingLeft">20sp</item>-->
+        <item name="android:background">@drawable/shape_opinion</item>
+    </style>
+
+    <style name="OpinionAuthor">
+        <item name="android:padding">10sp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:textColor">@color/colorSecondary</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="OpinionMessage">
+        <item name="android:textColor">@color/colorSecondary</item>
+        <item name="android:textSize">17sp</item>
+        <item name="android:layout_margin">20sp</item>
+    </style>
+
+    <style name="OpinionDate">
+        <item name="android:layout_marginTop">3sp</item>
+        <item name="android:layout_marginRight">20sp</item>
+    </style>
 </resources>

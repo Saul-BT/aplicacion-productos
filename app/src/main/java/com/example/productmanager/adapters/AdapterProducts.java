@@ -27,13 +27,11 @@ public class AdapterProducts extends RecyclerView.Adapter<AdapterProducts.Produc
     private int resId;
     private Context ctx;
     private List<Product> products;
-    private ProductsFragment fragment;
 
-    public AdapterProducts(ProductsFragment fragment, int resId, List<Product> products) {
+    public AdapterProducts(Context ctx, int resId, List<Product> products) {
         this.resId = resId;
         this.products = products;
-        this.fragment = fragment;
-        this.ctx = fragment.getActivity();
+        this.ctx = ctx;
     }
 
     @NonNull

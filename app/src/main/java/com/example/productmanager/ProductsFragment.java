@@ -80,9 +80,8 @@ public class ProductsFragment extends Fragment {
 
         recyclerView = view.findViewById(R.id.recycler_products);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        recyclerView.addItemDecoration(new DividerItemDecoration(getActivity(), DividerItemDecoration.HORIZONTAL));
 
-        productsAdapter = new AdapterProducts(this, R.layout.product_view, new ArrayList<Product>());
+        productsAdapter = new AdapterProducts(getActivity(), R.layout.product_view, new ArrayList<Product>());
         recyclerView.setAdapter(productsAdapter);
 
         fm.dbProductsRef.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
