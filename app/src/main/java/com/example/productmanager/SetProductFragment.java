@@ -112,7 +112,7 @@ public class SetProductFragment extends Fragment {
                         Float.parseFloat(productPrice.getText().toString())
                 );
 
-                fm.addProduct(newProduct);
+                fm.setProduct(newProduct);
                 Navigation.findNavController(view).popBackStack();
             }
         });

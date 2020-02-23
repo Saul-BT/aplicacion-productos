@@ -3,6 +3,8 @@ package com.example.productmanager.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import androidx.annotation.Nullable;
+
 public class Product implements Parcelable {
     private String encodedPhoto;
     private String name;
@@ -63,6 +65,13 @@ public class Product implements Parcelable {
     @Override
     public int hashCode() {
         return this.code.hashCode();
+    }
+
+    @Override
+    public boolean equals(@Nullable Object obj) {
+        if (!(obj instanceof Product)) return super.equals(obj);
+
+        return ((Product) obj).code.equals(this.code);
     }
 
     @Override

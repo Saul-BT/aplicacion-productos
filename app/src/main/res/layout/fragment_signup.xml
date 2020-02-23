@@ -7,100 +7,113 @@
     android:padding="@dimen/main_layout_padding"
     tools:context=".SignUpFragment">
 
-    <TextView
-        android:id="@+id/textView2"
-        style="@style/Header"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="15sp"
-        android:gravity="center"
-        android:text="Registro de Usuario" />
+        android:layout_height="match_parent">
 
-    <com.google.android.material.textfield.TextInputLayout
-        style="@style/TextLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/et_sign_up_username"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Nombre de Usuario"
-            android:inputType="text" />
+            android:orientation="vertical" >
 
-    </com.google.android.material.textfield.TextInputLayout>
+            <TextView
+                android:id="@+id/textView2"
+                style="@style/Header"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="15sp"
+                android:gravity="center"
+                android:text="Registro de Usuario" />
 
-    <com.google.android.material.textfield.TextInputLayout
-        style="@style/TextLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/TextLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/et_sign_up_real_name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Nombre Real"
-            android:inputType="textPersonName" />
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_sign_up_username"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="Nombre de Usuario"
+                    android:inputType="text" />
 
-    </com.google.android.material.textfield.TextInputLayout>
+            </com.google.android.material.textfield.TextInputLayout>
 
-    <com.google.android.material.textfield.TextInputLayout
-        style="@style/TextLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/TextLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/et_sign_up_email"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Correo Electrónico"
-            android:inputType="textEmailAddress" />
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_sign_up_real_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="Nombre Real"
+                    android:inputType="textPersonName" />
 
-    </com.google.android.material.textfield.TextInputLayout>
+            </com.google.android.material.textfield.TextInputLayout>
 
-    <com.google.android.material.textfield.TextInputLayout
-        style="@style/TextLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/TextLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/et_sign_up_pass"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Contraseña"
-            android:inputType="textPassword" />
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_sign_up_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="Correo Electrónico"
+                    android:inputType="textEmailAddress" />
 
-    </com.google.android.material.textfield.TextInputLayout>
+            </com.google.android.material.textfield.TextInputLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="15sp"
-        android:orientation="horizontal">
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/TextLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-        <CheckBox
-            android:id="@+id/checkBox2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Acepto los " />
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_sign_up_pass"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="Contraseña"
+                    android:inputType="textPassword" />
 
-        <TextView
-            android:id="@+id/tv_link_terms_and_conditions"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Términos y Condiciones"
-            android:textColor="#03A9F4" />
-    </LinearLayout>
+            </com.google.android.material.textfield.TextInputLayout>
 
-    <Button
-        android:id="@+id/b_sign_up"
-        style="@style/Button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Aceptar" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="15sp"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:id="@+id/checkBox2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Acepto los " />
+
+                <TextView
+                    android:id="@+id/tv_link_terms_and_conditions"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Términos y Condiciones"
+                    android:textColor="#03A9F4" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/b_sign_up"
+                style="@style/Button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Aceptar" />
+
+        </LinearLayout>
+    </ScrollView>
+
 </LinearLayout>

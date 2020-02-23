@@ -28,15 +28,15 @@ public class FireManager {
         return fm;
     }
 
-    public void addUser(final User newUser) {
+    public void setUser(final User newUser) {
         dbUsersRef.document(newUser.getUsername()).set(newUser);
     }
 
-    public void addProduct(final Product newProduct) {
+    public void setProduct(final Product newProduct) {
         dbProductsRef.document(newProduct.getCode()).set(newProduct);
     }
 
-    public void addOpinion(final Product product, final Opinion opinion) {
+    public void setOpinion(final Product product, final Opinion opinion) {
         fm.dbOpinionsRef.document().set(new Object() {
             public DocumentReference userRef = fm.dbUsersRef.document(MainActivity.currentUser.getUsername());
             public DocumentReference productRef = fm.dbProductsRef.document(product.getCode());

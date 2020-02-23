@@ -10,24 +10,24 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.provider.DocumentsContract;
 import android.util.DisplayMetrics;
-import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.productmanager.adapters.AdapterOpinedProducts;
+import com.example.productmanager.adapters.AdapterUsers;
 import com.example.productmanager.model.FireManager;
 import com.example.productmanager.model.Product;
+import com.example.productmanager.model.User;
+import com.example.productmanager.model.UserType;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
-import com.google.firebase.firestore.model.Document;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -45,6 +45,9 @@ public class AccountFragment extends Fragment {
     private AdapterOpinedProducts adapterOpinedProducts;
     private RecyclerView recyclerOpinedProducts;
 
+    private AdapterUsers adapterUsers;
+    private RecyclerView recyclerUsers;
+
     private TextView accounTRealName, accountEmail, accountOpinedProductHeader;
 
     public AccountFragment() {
@@ -58,7 +61,7 @@ public class AccountFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_account, container, false);
 
         if (MainActivity.currentUser.getType().canManageUsers) {
-            view.findViewById(R.id.nsv_other_accounts).setVisibility(View.VISIBLE);
+            view.findViewById(R.id.ll_other_accounts).setVisibility(View.VISIBLE);
         }
 
         Context ctx = getActivity();
@@ -90,11 +93,38 @@ public class AccountFragment extends Fragment {
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 if (task.isSuccessful()) {
                     QuerySnapshot result = task.getResult();
+                    Set<Product> products = new HashSet<>();
 
                     for (QueryDocumentSnapshot document : result) {
                         ((DocumentReference) document.get("productRef"))
-                                .get().addOnCompleteListener(addProductsToAdapter());
+                                .get().addOnCompleteListener(addProductsToAdapter(products));
                     }
+                }
+            }
+        });
+
+        recyclerUsers = view.findViewById(R.id.recycler_users);
+        recyclerUsers.setLayoutManager(new LinearLayoutManager(getActivity()));
+
+        adapterUsers = new AdapterUsers(getActivity(), R.layout.user_view, new ArrayList<User>());
+        recyclerUsers.setAdapter(adapterUsers);
+
+        fm.dbUsersRef.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if (task.isSuccessful()) {
+                    QuerySnapshot result = task.getResult();
+                    List<User> users = new ArrayList<>();
+
+                    for (QueryDocumentSnapshot document : result) {
+                        User user = document.toObject(User.class);
+                        if (user.getType() == UserType.OWNER) continue;
+
+                        users.add(user);
+                    }
+
+                    adapterUsers.setUsers(users);
+                    adapterUsers.notifyDataSetChanged();
                 }
             }
         });
@@ -102,9 +132,7 @@ public class AccountFragment extends Fragment {
         return view;
     }
 
-    private OnCompleteListener<DocumentSnapshot> addProductsToAdapter() {
-        final Set<Product> products = new HashSet<>();
-
+    private OnCompleteListener<DocumentSnapshot> addProductsToAdapter(final Set<Product> productsToCompare) {
         return new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
@@ -113,8 +141,8 @@ public class AccountFragment extends Fragment {
                 if (document.exists()) {
                     Product opinedProduct = document.toObject(Product.class);
 
-                    if (!products.contains(opinedProduct)) {
-                        products.add(opinedProduct);
+                    if (!productsToCompare.contains(opinedProduct)) {
+                        productsToCompare.add(opinedProduct);
                         adapterOpinedProducts.addProduct(opinedProduct);
                         adapterOpinedProducts.notifyItemChanged(
                                 adapterOpinedProducts.getItemCount() - 1);

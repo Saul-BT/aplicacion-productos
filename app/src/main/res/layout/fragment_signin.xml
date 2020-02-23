@@ -8,82 +8,94 @@
     android:padding="@dimen/main_layout_padding"
     tools:context=".SignInFragment">
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_margin="50dp"
-        android:src="@drawable/ic_logo" />
-
-    <TextView
-        android:id="@+id/textView"
-        style="@style/Header"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="15sp"
-        android:gravity="center"
-        android:text="Inicio de Sesión" />
+        android:layout_height="match_parent">
 
-    <com.google.android.material.textfield.TextInputLayout
-        style="@style/TextLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/et_sign_in_username"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Nombre de Usuario"
-            android:inputType="textPersonName" />
+            android:orientation="vertical" >
 
-    </com.google.android.material.textfield.TextInputLayout>
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="50dp"
+                android:src="@drawable/ic_logo" />
 
+            <TextView
+                android:id="@+id/textView"
+                style="@style/Header"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="15sp"
+                android:gravity="center"
+                android:text="Inicio de Sesión" />
 
-    <com.google.android.material.textfield.TextInputLayout
-        style="@style/TextLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/TextLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/et_sign_in_pass"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Contraseña"
-            android:inputType="textPassword" />
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_sign_in_username"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="Nombre de Usuario"
+                    android:inputType="textPersonName" />
 
-    </com.google.android.material.textfield.TextInputLayout>
+            </com.google.android.material.textfield.TextInputLayout>
 
-    <CheckBox
-        android:id="@+id/checkBox"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="15sp"
-        android:text="Recordarme" />
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/TextLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="15sp"
-        android:orientation="horizontal">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_sign_in_pass"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="Contraseña"
+                    android:inputType="textPassword" />
 
-        <Button
-            android:id="@+id/b_sign_in"
-            style="@style/Button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Acceso" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-        <Button
-            android:id="@+id/b_want_sign_up"
-            style="@style/Button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Registro" />
-    </LinearLayout>
+            <CheckBox
+                android:id="@+id/checkBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="15sp"
+                android:text="Recordarme" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="15sp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/b_sign_in"
+                    style="@style/Button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Acceso" />
+
+                <Button
+                    android:id="@+id/b_want_sign_up"
+                    style="@style/Button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Registro" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
 
 </LinearLayout>

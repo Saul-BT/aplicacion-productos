@@ -56,7 +56,7 @@ public class SignUpFragment extends Fragment {
                         UserType.NORMAL
                 );
 
-                fm.addUser(newUser);
+                fm.setUser(newUser);
                 MainActivity.currentUser = newUser;
                 Navigation.findNavController(view).navigate(R.id.go_to_products);
             }

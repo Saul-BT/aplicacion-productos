@@ -25,6 +25,7 @@ import com.example.productmanager.model.Opinion;
 import com.example.productmanager.model.Product;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
@@ -93,7 +94,7 @@ public class ProductDetailsFragment extends Fragment {
         }
 
         fm.dbOpinionsRef.whereEqualTo("productRef", fm.dbProductsRef.document(selectedProduct.getCode()))
-                .orderBy("date").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                .orderBy("date", Query.Direction.DESCENDING).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 if (task.isSuccessful()) {
@@ -152,7 +153,7 @@ public class ProductDetailsFragment extends Fragment {
 
                 opinionsAdapter.opinions.add(newOpinion);
                 opinionsAdapter.notifyItemChanged(opinionsAdapter.opinions.size() - 1);
-                fm.addOpinion(selectedProduct, newOpinion);
+                fm.setOpinion(selectedProduct, newOpinion);
 
                 etMessage.setText(null);
             }
