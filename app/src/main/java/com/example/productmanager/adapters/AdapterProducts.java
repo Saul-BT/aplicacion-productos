@@ -96,6 +96,15 @@ public class AdapterProducts extends RecyclerView.Adapter<AdapterProducts.Produc
         return products.size();
     }
 
+    public Product getProductByCode(String code) {
+        for (Product product : allProducts) {
+            if (product.getCode().equals(code))
+                return product;
+        }
+
+        return null;
+    }
+
     @Override
     public Filter getFilter() {
         return productFilter;

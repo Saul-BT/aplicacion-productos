@@ -1,15 +1,19 @@
 package com.example.productmanager;
 
 
+import android.graphics.drawable.AnimatedVectorDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
+import androidx.vectordrawable.graphics.drawable.AnimatedVectorDrawableCompat;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.productmanager.model.FireManager;
@@ -53,6 +57,8 @@ public class SignInFragment extends Fragment {
     private void setUpComponents(View view) {
         fragmentView = view;
 
+        animateLogo();
+
         etUsername = fragmentView.findViewById(R.id.et_sign_in_username);
         etPassword = fragmentView.findViewById(R.id.et_sign_in_pass);
 
@@ -79,6 +85,18 @@ public class SignInFragment extends Fragment {
                 Navigation.findNavController(v).navigate(R.id.go_to_sign_up);
             }
         });
+    }
+
+    private void animateLogo() {
+        ImageView logo = fragmentView.findViewById(R.id.iv_logo);
+        Drawable drawable = logo.getDrawable();
+
+        if (drawable instanceof AnimatedVectorDrawableCompat) {
+            ((AnimatedVectorDrawableCompat) drawable).start();
+        }
+        else if (drawable instanceof AnimatedVectorDrawable) {
+            ((AnimatedVectorDrawable) drawable).start();
+        }
     }
 
     private OnCompleteListener<DocumentSnapshot> checkAccess() {

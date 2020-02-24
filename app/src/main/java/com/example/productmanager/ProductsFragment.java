@@ -190,23 +190,10 @@ public class ProductsFragment extends Fragment {
     }
 
     private void gotoProductDetails(String code) {
-        fm.dbProductsRef.whereEqualTo("code", code)
-                .get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-            @Override
-            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                List<DocumentSnapshot> documents = queryDocumentSnapshots.getDocuments();
+        Product product = productsAdapter.getProductByCode(code);
+        Bundle bundle = new Bundle();
+        bundle.putParcelable("selectedProduct", product);
 
-                if (documents.size() == 0) {
-                    Toast.makeText(getContext(), "Ese producto no no esta en la base de datos", Toast.LENGTH_LONG).show();
-                    return;
-                }
-                Product product = documents.get(0).toObject(Product.class);
-
-                Bundle bundle = new Bundle();
-                bundle.putParcelable("selectedProduct", product);
-
-                Navigation.findNavController(fragmentView).navigate(R.id.go_to_product_details, bundle);
-            }
-        });
+        Navigation.findNavController(fragmentView).navigate(R.id.go_to_product_details, bundle);
     }
 }
