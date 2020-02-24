@@ -33,7 +33,7 @@ import me.sudar.zxingorient.ZxingOrientResult;
  */
 public class SetProductFragment extends Fragment {
 
-    ZxingOrient codeScanner;
+    private ZxingOrient codeScanner;
     private FireManager fm = FireManager.getInstance();
 
     private Bitmap bitmapPhoto;
