@@ -27,6 +27,7 @@ public class TermsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_terms, container, false);
+        ((MainActivity) getActivity()).getSupportActionBar().hide();
 
         TextView tvTerms = view.findViewById(R.id.tv_terms_and_conditions);
 

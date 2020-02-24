@@ -43,6 +43,7 @@ public class SignInFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_signin, container, false);
+        ((MainActivity) getActivity()).getSupportActionBar().hide();
 
         setUpComponents(view);
 

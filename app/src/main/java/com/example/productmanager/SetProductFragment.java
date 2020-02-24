@@ -54,6 +54,8 @@ public class SetProductFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_set_product, container, false);
+        ((MainActivity) getActivity()).getSupportActionBar().hide();
+
         codeScanner = new ZxingOrient(this);
         codeScanner.setToolbarColor(getString(R.color.colorAccent))
                    .setInfoBoxColor(getString(R.color.colorAccent))

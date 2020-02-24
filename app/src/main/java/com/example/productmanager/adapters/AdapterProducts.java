@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -15,22 +17,25 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.productmanager.ProductsFragment;
 import com.example.productmanager.R;
 import com.example.productmanager.model.ImageConverter;
 import com.example.productmanager.model.Product;
 
+import java.text.Collator;
+import java.util.ArrayList;
 import java.util.List;
 
-public class AdapterProducts extends RecyclerView.Adapter<AdapterProducts.ProductsHolder> {
+public class AdapterProducts extends RecyclerView.Adapter<AdapterProducts.ProductsHolder> implements Filterable {
 
     private int resId;
     private Context ctx;
     private List<Product> products;
+    private List<Product> allProducts;
 
     public AdapterProducts(Context ctx, int resId, List<Product> products) {
         this.resId = resId;
         this.products = products;
+        this.allProducts = new ArrayList<>(products);
         this.ctx = ctx;
     }
 
@@ -83,12 +88,51 @@ public class AdapterProducts extends RecyclerView.Adapter<AdapterProducts.Produc
 
     public void setProducts(List<Product> products) {
         this.products = products;
+        this.allProducts = new ArrayList<>(products);
     }
 
     @Override
     public int getItemCount() {
         return products.size();
     }
+
+    @Override
+    public Filter getFilter() {
+        return productFilter;
+    }
+
+    private Filter productFilter = new Filter() {
+        @Override
+        protected FilterResults performFiltering(CharSequence charSequence) {
+            List<Product> filteredProducts = new ArrayList<>();
+
+            if (charSequence == null || charSequence.length() == 0) {
+                filteredProducts.addAll(allProducts);
+            }
+            else {
+                String filterPattern = charSequence.toString().toLowerCase().trim();
+
+                for (Product product : allProducts) {
+                    String productName = product.getName().toLowerCase();
+                    if (productName.contains(filterPattern)) {
+                        filteredProducts.add(product);
+                    }
+                }
+            }
+
+            FilterResults results = new FilterResults();
+            results.values = filteredProducts;
+
+            return results;
+        }
+
+        @Override
+        protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
+            products.clear();
+            products.addAll(((List) filterResults.values));
+            notifyDataSetChanged();
+        }
+    };
 
     class ProductsHolder extends RecyclerView.ViewHolder {
         public View view;

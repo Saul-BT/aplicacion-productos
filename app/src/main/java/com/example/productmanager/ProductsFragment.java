@@ -5,6 +5,9 @@ import android.annotation.SuppressLint;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
@@ -13,9 +16,13 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.SearchView;
 
 import com.example.productmanager.adapters.AdapterProducts;
 import com.example.productmanager.model.FireManager;
@@ -50,9 +57,10 @@ public class ProductsFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        setHasOptionsMenu(true);
+
         View view = inflater.inflate(R.layout.fragment_products, container, false);
 
-        setHasOptionsMenu(true);
         setUpComponents(view);
 
         return view;
@@ -62,17 +70,10 @@ public class ProductsFragment extends Fragment {
     private void setUpComponents(final View view) {
         fragmentView = view;
 
-        Toolbar toolbar = fragmentView.findViewById(R.id.toolbar);
-        toolbar.inflateMenu(R.menu.menu_user);
-        toolbar.setTitle(R.string.products_toolbar_title);
-
-        toolbar.getMenu().findItem(R.id.mi_account).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(MenuItem menuItem) {
-                Navigation.findNavController(view).navigate(R.id.go_to_account);
-                return true;
-            }
-        });
+        ActionBar actionBar = ((AppCompatActivity) getActivity()).getSupportActionBar();
+        actionBar.show();
+        //toolbar.inflateMenu(R.menu.menu_user);
+        actionBar.setTitle(R.string.products_toolbar_title);
 
         addProductFab = fragmentView.findViewById(R.id.fab_add_product);
 
@@ -112,5 +113,36 @@ public class ProductsFragment extends Fragment {
         });
 
 
+    }
+
+    @Override
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        inflater.inflate(R.menu.menu_user, menu);
+
+        MenuItem accountItem = menu.findItem(R.id.mi_account);
+        MenuItem searchItem = menu.findItem(R.id.action_search);
+        SearchView searchView = (SearchView) searchItem.getActionView();
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                productsAdapter.getFilter().filter(newText);
+                return false;
+            }
+        });
+
+        accountItem.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem menuItem) {
+                Navigation.findNavController(fragmentView).navigate(R.id.go_to_account);
+                return true;
+            }
+        });
     }
 }

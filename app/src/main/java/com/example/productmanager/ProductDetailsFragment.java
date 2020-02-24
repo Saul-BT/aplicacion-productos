@@ -62,6 +62,8 @@ public class ProductDetailsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_product_details, container, false);
+        ((MainActivity) getActivity()).getSupportActionBar().hide();
+
         selectedProduct = getArguments().getParcelable("selectedProduct");
 
         isDetailsHeadVisible = true;
