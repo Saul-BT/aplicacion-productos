@@ -69,6 +69,11 @@ public class AdapterOpinions extends RecyclerView.Adapter<AdapterOpinions.Opinio
         this.opinions = opinions;
     }
 
+    public void addOpinion(Opinion opinion) {
+        this.opinions.add(0, opinion);
+        notifyDataSetChanged();
+    }
+
     @Override
     public int getItemCount() {
         return this.opinions.size();

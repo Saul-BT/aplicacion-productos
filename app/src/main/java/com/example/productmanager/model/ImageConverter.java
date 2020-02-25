@@ -36,6 +36,7 @@ public abstract class ImageConverter {
                 .create(Resources.getSystem(), croppedBitmap);
 
         roundedBitmap.setCornerRadius(dim * 0.25f);
+
         return roundedBitmap;
     }
 

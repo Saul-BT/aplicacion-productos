@@ -17,6 +17,7 @@ import android.widget.TextView;
  */
 public class TermsFragment extends Fragment {
 
+    private TextView tvTerms;
 
     public TermsFragment() {
         // Required empty public constructor
@@ -29,7 +30,7 @@ public class TermsFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_terms, container, false);
         ((MainActivity) getActivity()).getSupportActionBar().hide();
 
-        TextView tvTerms = view.findViewById(R.id.tv_terms_and_conditions);
+        tvTerms = view.findViewById(R.id.tv_terms_and_conditions);
 
         tvTerms.setText(R.string.terms_and_conditions);
 

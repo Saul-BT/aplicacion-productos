@@ -120,6 +120,7 @@ public class AccountFragment extends Fragment {
                     for (QueryDocumentSnapshot document : result) {
                         User user = document.toObject(User.class);
                         if (user.getType() == UserType.OWNER) continue;
+                        if (MainActivity.currentUser.equals(user)) continue;
 
                         users.add(user);
                     }

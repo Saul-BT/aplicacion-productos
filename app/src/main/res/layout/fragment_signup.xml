@@ -23,7 +23,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="15sp"
                 android:gravity="center"
-                android:text="Registro de Usuario" />
+                android:text="@string/sign_up_title" />
 
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/TextLayout"
@@ -35,7 +35,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:hint="Nombre de Usuario"
+                    android:hint="@string/username_hint"
                     android:inputType="text" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -50,7 +50,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:hint="Nombre Real"
+                    android:hint="@string/sign_up_realname_hint"
                     android:inputType="textPersonName" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -65,7 +65,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:hint="Correo Electrónico"
+                    android:hint="@string/sign_up_email_hint"
                     android:inputType="textEmailAddress" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -80,7 +80,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:hint="Contraseña"
+                    android:hint="@string/password_hint"
                     android:inputType="textPassword" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -92,17 +92,17 @@
                 android:orientation="horizontal">
 
                 <CheckBox
-                    android:id="@+id/checkBox2"
+                    android:id="@+id/cb_sign_up_terms_agree"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Acepto los " />
+                    android:text="@string/sign_up_checkbox_terms_text" />
 
                 <TextView
                     android:id="@+id/tv_link_terms_and_conditions"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Términos y Condiciones"
+                    android:layout_marginStart="3sp"
+                    android:text="@string/sign_up_terms_and_conditions"
                     android:textColor="#03A9F4" />
             </LinearLayout>
 
@@ -111,7 +111,7 @@
                 style="@style/Button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Aceptar" />
+                android:text="@string/sign_up_button_text" />
 
         </LinearLayout>
     </ScrollView>

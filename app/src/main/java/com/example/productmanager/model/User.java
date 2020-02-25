@@ -1,5 +1,7 @@
 package com.example.productmanager.model;
 
+import androidx.annotation.Nullable;
+
 public class User {
     private UserType type;
     private String username;
@@ -49,7 +51,10 @@ public class User {
         this.email = email;
     }
 
-    public String getPass() {
-        return pass;
+    @Override
+    public boolean equals(@Nullable Object obj) {
+        if (!(obj instanceof User)) return super.equals(obj);
+
+        return ((User) obj).username.equals(this.username);
     }
 }

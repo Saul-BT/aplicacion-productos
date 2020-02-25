@@ -153,8 +153,7 @@ public class ProductDetailsFragment extends Fragment {
                         etMessage.getText().toString()
                 );
 
-                opinionsAdapter.opinions.add(newOpinion);
-                opinionsAdapter.notifyItemChanged(opinionsAdapter.opinions.size() - 1);
+                opinionsAdapter.addOpinion(newOpinion);
                 fm.setOpinion(selectedProduct, newOpinion);
 
                 etMessage.setText(null);

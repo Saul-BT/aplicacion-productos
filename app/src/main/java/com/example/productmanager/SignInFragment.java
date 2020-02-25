@@ -35,8 +35,7 @@ public class SignInFragment extends Fragment {
     private View fragmentView;
     private FireManager fm = FireManager.getInstance();
 
-    private TextInputEditText etUsername;
-    private TextInputEditText etPassword;
+    private TextInputEditText etUsername, etPassword;
 
 
     public SignInFragment() {
@@ -79,6 +78,7 @@ public class SignInFragment extends Fragment {
             }
         });
 
+        // Navigate to SignUpFragment
         fragmentView.findViewById(R.id.b_want_sign_up).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -104,8 +104,9 @@ public class SignInFragment extends Fragment {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                 if (task.isSuccessful()) {
+                    String pass = etPassword.getText().toString();
                     String hashedPass = Hashing.sha512()
-                            .hashString(etPassword.getText().toString(), Charsets.UTF_8).toString();
+                            .hashString(pass, Charsets.UTF_8).toString();
                     DocumentSnapshot document = task.getResult();
 
                     if (document.exists() && document.get("pass", String.class).equals(hashedPass)) {
@@ -125,7 +126,7 @@ public class SignInFragment extends Fragment {
                 }
                 else
                     Toast.makeText(getActivity(),
-                            fragmentView.getResources().getString(R.string.unknown_login_error),
+                            fragmentView.getResources().getString(R.string.unknown_sign_in_error),
                             Toast.LENGTH_LONG).show();
             }
         };

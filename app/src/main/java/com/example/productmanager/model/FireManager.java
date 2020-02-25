@@ -7,7 +7,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 public class FireManager {
 
-    final FirebaseFirestore db;
+    private final FirebaseFirestore db;
     public final CollectionReference dbUsersRef;
     public final CollectionReference dbProductsRef;
     public final CollectionReference dbOpinionsRef;

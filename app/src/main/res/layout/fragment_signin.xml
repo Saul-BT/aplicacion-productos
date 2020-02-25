@@ -32,7 +32,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="15sp"
                 android:gravity="center"
-                android:text="Inicio de Sesión" />
+                android:text="@string/sign_in_title" />
 
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/TextLayout"
@@ -44,7 +44,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:hint="Nombre de Usuario"
+                    android:hint="@string/username_hint"
                     android:inputType="textPersonName" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -59,7 +59,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:hint="Contraseña"
+                    android:hint="@string/password_hint"
                     android:inputType="textPassword" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -69,7 +69,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="15sp"
-                android:text="Recordarme" />
+                android:text="@string/sign_in_remember_text" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -83,7 +83,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Acceso" />
+                    android:text="@string/sign_in_button_text" />
 
                 <Button
                     android:id="@+id/b_want_sign_up"
@@ -91,7 +91,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Registro" />
+                    android:text="@string/go_sign_up_button_text" />
             </LinearLayout>
 
         </LinearLayout>

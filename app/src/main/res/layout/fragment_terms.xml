@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="15sp"
         android:gravity="center"
-        android:text="Términos y Condiciones" />
+        android:text="@string/terms_title" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -41,5 +41,5 @@
         style="@style/Button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Acepto" />
+        android:text="@string/terms_go_back_text" />
 </LinearLayout>
