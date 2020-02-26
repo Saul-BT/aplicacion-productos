@@ -1,48 +1,53 @@
 <resources>
     <string name="app_name">ProductManager</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-
-    <string name="products_toolbar_title">Productos</string>
-
+    <!-- General strings -->
     <string name="uncompleted_fields_message">Por favor, rellene todos los campos</string>
-
-    <string name="incorrect_login_error">El usuario introducido o la contraseña no son válidos</string>
-    <string name="user_already_exists_error">El usuario %s ya existe, prueba a iniciar sesión</string>
-    <string name="unknown_sign_in_error">En este momento no se puede verificar la existencia del usuario</string>
-    <string name="unknown_sign_up_error">En este momento no se puede registrar el usuario</string>
-    <string name="terms_and_conditions">Lorem ipsum dolor sit amet consectetur adipiscing elit aliquam, a vehicula ut venenatis hendrerit nisi malesuada, habitasse tempor pellentesque neque aliquet fringilla donec. Fusce quisque erat senectus primis sed suspendisse vestibulum sagittis, vitae ac fames fringilla morbi lectus bibendum, suscipit rutrum mus ut volutpat a auctor. Arcu lacinia placerat congue feugiat class porttitor vehicula varius, fames volutpat tristique aptent nullam etiam at faucibus sociosqu, est netus praesent tempor massa cras iaculis.
-
-Penatibus neque leo id vel potenti accumsan pretium mi blandit aliquet, per consequat inceptos rhoncus luctus interdum molestie libero egestas sem, natoque nisl scelerisque condimentum mollis magnis parturient quis tortor. Vestibulum ut eu ultricies lobortis ante venenatis donec nibh cras fringilla pretium class, bibendum pulvinar sodales varius torquent penatibus tellus taciti mattis nam inceptos euismod, aliquet luctus eleifend faucibus parturient velit a maecenas sapien porttitor cum. Sociis neque morbi blandit pharetra nunc vel hendrerit litora curae condimentum nisi, ullamcorper integer urna accumsan cursus non himenaeos nibh fusce.</string>
-    <string name="unchecked_terms_message">Debe aceptar los Términos y Condiciones</string>
     <string name="invalid_username_message">Debe introducir un username de entre 4 y 15 caracteres</string>
-    <string name="invalid_email_message">Debe introducir un email válido</string>
-    <string name="sign_in_title">Inicio de Sesión</string>
     <string name="username_hint">Nombre de Usuario</string>
     <string name="password_hint">Contraseña</string>
+    <string name="info_scanner">Escanea el codigo de barras o QR</string>
+    <string name="price_with_currency_template">%s €</string>
+
+    <!-- Sign In strings -->
+    <string name="incorrect_login_error">El usuario introducido o la contraseña no son válidos</string>
+    <string name="unknown_sign_in_error">En este momento no se puede verificar la existencia del usuario</string>
+    <string name="sign_in_title">Inicio de Sesión</string>
     <string name="sign_in_remember_text">Recordarme</string>
     <string name="sign_in_button_text">Acceso</string>
     <string name="go_sign_up_button_text">Registro</string>
+
+    <!-- Sign Up strings -->
+    <string name="user_already_exists_error">El usuario %s ya existe, prueba a iniciar sesión</string>
+    <string name="unknown_sign_up_error">En este momento no se puede registrar el usuario</string>
+    <string name="unchecked_terms_message">Debe aceptar los Términos y Condiciones</string>
+    <string name="invalid_email_message">Debe introducir un email válido</string>
+    <string name="sign_up_title">Registro de Usuario</string>
     <string name="sign_up_realname_hint">Nombre Real</string>
     <string name="sign_up_email_hint">Correo Electrónico</string>
-    <string name="sign_up_button_text">Aceptar</string>
     <string name="sign_up_checkbox_terms_text">Acepto los </string>
     <string name="sign_up_terms_and_conditions">Términos y Condiciones</string>
+    <string name="sign_up_button_text">Aceptar</string>
+
+    <!-- Terms strings -->
     <string name="terms_title">Términos y Condiciones</string>
-    <string name="terms_go_back_text">Acepto</string>
+    <string name="terms_and_conditions">Lorem ipsum dolor sit amet consectetur adipiscing elit aliquam, a vehicula ut venenatis hendrerit nisi malesuada, habitasse tempor pellentesque neque aliquet fringilla donec. Fusce quisque erat senectus primis sed suspendisse vestibulum sagittis, vitae ac fames fringilla morbi lectus bibendum, suscipit rutrum mus ut volutpat a auctor. Arcu lacinia placerat congue feugiat class porttitor vehicula varius, fames volutpat tristique aptent nullam etiam at faucibus sociosqu, est netus praesent tempor massa cras iaculis. Penatibus neque leo id vel potenti accumsan pretium mi blandit aliquet, per consequat inceptos rhoncus luctus interdum molestie libero egestas sem, natoque nisl scelerisque condimentum mollis magnis parturient quis tortor. Vestibulum ut eu ultricies lobortis ante venenatis donec nibh cras fringilla pretium class, bibendum pulvinar sodales varius torquent penatibus tellus taciti mattis nam inceptos euismod, aliquet luctus eleifend faucibus parturient velit a maecenas sapien porttitor cum. Sociis neque morbi blandit pharetra nunc vel hendrerit litora curae condimentum nisi, ullamcorper integer urna accumsan cursus non himenaeos nibh fusce.</string>
+    <string name="terms_go_back_text">Volver</string>
 
-    <string name="sign_up_title">Registro de Usuario</string>
+    <!-- Products strings -->
+    <string name="products_toolbar_title">Productos</string>
+    <string name="products_not_found">Parece que aún no hay productos</string>
+    <string name="scan_searched_product_not_found">El producto que busca no existe</string>
 
-    <string name="info_scanner">Escanea el codigo de barras o QR</string>
-    <string name="opinions_title">Opiniones</string>
+    <!-- Opinions strings -->
     <string name="opinions_not_found">Parece que aún no hay opiniones, sé el primero :D</string>
-    <string name="opinion_input_message">Deja tu opinón</string>
+    <string name="opinions_title">Opiniones</string>
+    <string name="opinion_hint">Deja tu opinón</string>
 
-    <string name="my_account_header">Mi cuenta</string>
-    <string name="price_with_currency_template">%s €</string>
+    <!-- Account strings -->
+    <string name="my_account_title">Mi cuenta</string>
     <string name="account_realname_template">Nombre real: %s</string>
     <string name="account_email_template">Email: %s</string>
-    <string name="account_opined_products_header_template">Hola %s, aquí están los productos en los cuales has opinado:</string>
+    <string name="account_opined_products_header_template">Hola %s, aquí están los productos sobre los que opinaste:</string>
     <string name="other_accounts_header">Otras cuentas</string>
 </resources>

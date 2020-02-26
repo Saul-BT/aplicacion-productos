@@ -30,6 +30,7 @@ import android.widget.Toast;
 import com.example.productmanager.adapters.AdapterProducts;
 import com.example.productmanager.model.FireManager;
 import com.example.productmanager.model.Product;
+import com.example.productmanager.model.UserSession;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -81,27 +82,20 @@ public class ProductsFragment extends Fragment {
 
         ActionBar actionBar = ((AppCompatActivity) getActivity()).getSupportActionBar();
         actionBar.show();
-        //toolbar.inflateMenu(R.menu.menu_user);
         actionBar.setTitle(R.string.products_toolbar_title);
 
         codeScanner = new ZxingOrient(this);
-        codeScanner.setToolbarColor(getString(R.color.colorAccent))
+        codeScanner.setIcon(R.drawable.ic_launcher_logo)
+                .setToolbarColor(getString(R.color.colorAccent))
                 .setInfoBoxColor(getString(R.color.colorAccent))
                 .setInfo(getString(R.string.info_scanner));
 
         bScanSearch = fragmentView.findViewById(R.id.b_scan_search);
         addProductFab = fragmentView.findViewById(R.id.fab_add_product);
 
-        if (MainActivity.currentUser.getType().canManageProducts) {
+        if (UserSession.currentUser.getType().canManageProducts) {
             addProductFab.setVisibility(View.VISIBLE);
-            addProductFab.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Navigation.findNavController(view).navigate(R.id.go_to_set_product);
-                }
-            });
         }
-
 
         recyclerView = view.findViewById(R.id.recycler_products);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -109,20 +103,16 @@ public class ProductsFragment extends Fragment {
         productsAdapter = new AdapterProducts(getActivity(), R.layout.product_view, new ArrayList<Product>());
         recyclerView.setAdapter(productsAdapter);
 
-        fm.dbProductsRef.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+        fm.dbProductsRef.get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
             @Override
-            public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                if (task.isSuccessful()) {
-                    QuerySnapshot result = task.getResult();
-                    List<Product> products = new ArrayList<>();
+            public void onSuccess(QuerySnapshot documents) {
+                List<Product> products = new ArrayList<>();
 
-                    for (QueryDocumentSnapshot document : result) {
-                        products.add(document.toObject(Product.class));
-                    }
-
-                    productsAdapter.setProducts(products);
-                    productsAdapter.notifyDataSetChanged();
+                for (QueryDocumentSnapshot document : documents) {
+                    products.add(document.toObject(Product.class));
                 }
+
+                productsAdapter.setProducts(products);
             }
         });
 
@@ -130,6 +120,13 @@ public class ProductsFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 codeScanner.initiateScan();
+            }
+        });
+
+        addProductFab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Navigation.findNavController(view).navigate(R.id.go_to_set_product);
             }
         });
     }
@@ -191,9 +188,19 @@ public class ProductsFragment extends Fragment {
 
     private void gotoProductDetails(String code) {
         Product product = productsAdapter.getProductByCode(code);
+
+        if (product == null) {
+            Toast.makeText(getContext(),
+                    getActivity().getString(R.string.scan_searched_product_not_found),
+                    Toast.LENGTH_LONG).show();
+            return;
+        }
+
         Bundle bundle = new Bundle();
         bundle.putParcelable("selectedProduct", product);
 
         Navigation.findNavController(fragmentView).navigate(R.id.go_to_product_details, bundle);
     }
+
+
 }

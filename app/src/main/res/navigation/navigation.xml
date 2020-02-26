@@ -80,5 +80,9 @@
             android:id="@+id/go_to_product_details"
             app:destination="@id/productDetailsFragment"
             app:enterAnim="@anim/fragment_fade_enter" />
+        <action
+            android:id="@+id/go_to_sign_in"
+            app:destination="@id/signinFragment"
+            app:enterAnim="@anim/fragment_fade_enter" />
     </fragment>
 </navigation>

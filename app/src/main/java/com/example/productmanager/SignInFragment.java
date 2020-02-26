@@ -13,11 +13,13 @@ import androidx.vectordrawable.graphics.drawable.AnimatedVectorDrawableCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.productmanager.model.FireManager;
 import com.example.productmanager.model.User;
+import com.example.productmanager.model.UserSession;
 import com.example.productmanager.model.UserType;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -36,7 +38,7 @@ public class SignInFragment extends Fragment {
     private FireManager fm = FireManager.getInstance();
 
     private TextInputEditText etUsername, etPassword;
-
+    private CheckBox cbRememberUser;
 
     public SignInFragment() {
         // Required empty public constructor
@@ -48,6 +50,16 @@ public class SignInFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_signin, container, false);
         ((MainActivity) getActivity()).getSupportActionBar().hide();
 
+        Fragment navhost = getActivity()
+                .getSupportFragmentManager()
+                .findFragmentById(R.id.nav_host_fragment);
+
+        UserSession.recover(getContext());
+
+        if (UserSession.currentUser != null) {
+            Navigation.findNavController(navhost.getView()).navigate(R.id.go_to_products);
+        }
+
         setUpComponents(view);
 
         return view;
@@ -58,6 +70,7 @@ public class SignInFragment extends Fragment {
 
         animateLogo();
 
+        cbRememberUser = fragmentView.findViewById(R.id.cb_sign_in_remember);
         etUsername = fragmentView.findViewById(R.id.et_sign_in_username);
         etPassword = fragmentView.findViewById(R.id.et_sign_in_pass);
 
@@ -110,7 +123,11 @@ public class SignInFragment extends Fragment {
                     DocumentSnapshot document = task.getResult();
 
                     if (document.exists() && document.get("pass", String.class).equals(hashedPass)) {
-                        MainActivity.currentUser = document.toObject(User.class);
+                        UserSession.currentUser = document.toObject(User.class);
+
+                        if (cbRememberUser.isChecked())
+                            UserSession.remember(getContext());
+
                         Navigation.findNavController(fragmentView).navigate(R.id.go_to_products);
                     }
                     else

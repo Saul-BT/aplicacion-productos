@@ -22,7 +22,9 @@ import com.example.productmanager.model.ImageConverter;
 import com.example.productmanager.model.Product;
 
 import java.text.Collator;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class AdapterProducts extends RecyclerView.Adapter<AdapterProducts.ProductsHolder> implements Filterable {
@@ -31,6 +33,7 @@ public class AdapterProducts extends RecyclerView.Adapter<AdapterProducts.Produc
     private Context ctx;
     private List<Product> products;
     private List<Product> allProducts;
+    private DecimalFormat df = new DecimalFormat("###.##");
 
     public AdapterProducts(Context ctx, int resId, List<Product> products) {
         this.resId = resId;
@@ -68,12 +71,15 @@ public class AdapterProducts extends RecyclerView.Adapter<AdapterProducts.Produc
         }
 
         int productImageSize = (int) ctx.getResources().getDimension(R.dimen.list_product_image_size);
+        String formattedPrice = ctx.getString(
+                R.string.price_with_currency_template,
+                df.format(holder.product.getPrice()));
         holder.image.getLayoutParams().height = productImageSize;
         holder.image.getLayoutParams().width = productImageSize;
 
         holder.image.setImageDrawable(coolPhoto);
         holder.tvName.setText(holder.product.getName());
-        holder.tvPrice.setText(String.valueOf(holder.product.getPrice()));
+        holder.tvPrice.setText(formattedPrice);
 
         holder.view.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -87,8 +93,10 @@ public class AdapterProducts extends RecyclerView.Adapter<AdapterProducts.Produc
     }
 
     public void setProducts(List<Product> products) {
+        Collections.sort(products);
         this.products = products;
         this.allProducts = new ArrayList<>(products);
+        notifyDataSetChanged();
     }
 
     @Override

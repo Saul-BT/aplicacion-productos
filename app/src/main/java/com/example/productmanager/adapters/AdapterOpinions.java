@@ -16,6 +16,7 @@ import com.example.productmanager.MainActivity;
 import com.example.productmanager.ProductDetailsFragment;
 import com.example.productmanager.R;
 import com.example.productmanager.model.Opinion;
+import com.example.productmanager.model.UserSession;
 
 import java.util.List;
 
@@ -56,7 +57,7 @@ public class AdapterOpinions extends RecyclerView.Adapter<AdapterOpinions.Opinio
         holder.tvMessage.setText(holder.opinion.getMessage());
 
         boolean isCurrentUser = holder.opinion.getAuthor()
-                .equals(MainActivity.currentUser.getUsername());
+                .equals(UserSession.currentUser.getUsername());
         int newBackColor = ctx.getResources().getColor(isCurrentUser
                                                         ? R.color.messageMineBackColor
                                                         : R.color.messageBackColor);
@@ -67,6 +68,7 @@ public class AdapterOpinions extends RecyclerView.Adapter<AdapterOpinions.Opinio
 
     public void setOpinions(List<Opinion> opinions) {
         this.opinions = opinions;
+        notifyDataSetChanged();
     }
 
     public void addOpinion(Opinion opinion) {

@@ -51,6 +51,14 @@ public class User {
         this.email = email;
     }
 
+    public String getPass() {
+        return pass;
+    }
+
+    public void setPass(String pass) {
+        this.pass = pass;
+    }
+
     @Override
     public boolean equals(@Nullable Object obj) {
         if (!(obj instanceof User)) return super.equals(obj);

@@ -5,12 +5,12 @@ import android.os.Parcelable;
 
 import androidx.annotation.Nullable;
 
-public class Product implements Parcelable {
+public class Product implements Parcelable, Comparable<Product> {
     private String encodedPhoto;
     private String name;
     private String code;
     private String description;
-    private float price;
+    private Float price;
 
     public Product(String encodedPhoto, String name, String code, String description, float price) {
         this.encodedPhoto = encodedPhoto;
@@ -107,4 +107,18 @@ public class Product implements Parcelable {
             return new Product[size];
         }
     };
+
+    @Override
+    public int compareTo(Product product) {
+        int[] compares = {
+                this.price.compareTo(product.price),
+                this.name.compareTo(product.name)
+        };
+
+        for (int compare : compares) {
+            if (compare != 0) return compare;
+        }
+
+        return 0;
+    }
 }

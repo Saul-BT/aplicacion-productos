@@ -1,83 +1,87 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="@dimen/main_layout_padding"
-    tools:context=".AccountFragment">
+    android:fillViewport="true"
+    android:padding="@dimen/main_layout_padding">
 
-    <!-- TODO: Update blank fragment layout -->
-
-    <androidx.core.widget.NestedScrollView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:fillViewport="true">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:orientation="horizontal">
 
             <TextView
                 style="@style/Header"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="5sp"
-                android:text="@string/my_account_header" />
+                android:layout_weight="1"
+                android:text="@string/my_account_title" />
+
+            <ImageButton
+                android:id="@+id/ib_sign_out"
+                style="@style/SimpleActionButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:src="@drawable/ic_log_out_black_30dp" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_account_realname"
+            style="@style/Paragraph"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Real name: Carlota Flores de Dios" />
+
+        <TextView
+            android:id="@+id/tv_account_email"
+            style="@style/Paragraph"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Email: carlotita@ohlala.com" />
+
+        <TextView
+            android:id="@+id/tv_account_opined_products"
+            style="@style/SubHeader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15sp"
+            android:text="Hi carlotaflores97, here are the products in which you have opined:" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_opined_products"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="3">
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+        <LinearLayout
+            android:id="@+id/ll_other_accounts"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:orientation="vertical"
+            android:visibility="gone">
 
             <TextView
-                android:id="@+id/tv_account_realname"
-                style="@style/Paragraph"
+                android:id="@+id/textView11"
+                style="@style/Header"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Real name: Carlota Flores de Dios" />
-
-            <TextView
-                android:id="@+id/tv_account_email"
-                style="@style/Paragraph"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Email: carlotita@ohlala.com" />
-
-            <TextView
-                android:id="@+id/tv_account_opined_products"
-                style="@style/SubHeader"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15sp"
-                android:text="Hi carlotaflores97, here are the products in which you have opined:" />
+                android:layout_marginTop="10sp"
+                android:text="@string/other_accounts_header" />
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recycler_opined_products"
+                android:id="@+id/recycler_users"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="3">
-
-            </androidx.recyclerview.widget.RecyclerView>
-
-            <LinearLayout
-                android:id="@+id/ll_other_accounts"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="2"
-                android:orientation="vertical"
-                android:visibility="gone">
-
-                <TextView
-                    android:id="@+id/textView11"
-                    style="@style/Header"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10sp"
-                    android:text="@string/other_accounts_header" />
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/recycler_users"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
-            </LinearLayout>
+                android:layout_height="match_parent" />
         </LinearLayout>
-    </androidx.core.widget.NestedScrollView>
-
-</LinearLayout>
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

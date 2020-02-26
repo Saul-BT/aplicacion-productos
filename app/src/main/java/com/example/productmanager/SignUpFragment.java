@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import com.example.productmanager.model.FireManager;
 import com.example.productmanager.model.User;
+import com.example.productmanager.model.UserSession;
 import com.example.productmanager.model.UserType;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -149,9 +150,10 @@ public class SignUpFragment extends Fragment {
                         return;
                     }
 
-                    MainActivity.currentUser = newUser;
+                    UserSession.currentUser = newUser;
                     fm.setUser(newUser);
 
+                    Navigation.findNavController(fragmentView).popBackStack();
                     Navigation.findNavController(fragmentView).navigate(R.id.go_to_products);
                 }
                 else {

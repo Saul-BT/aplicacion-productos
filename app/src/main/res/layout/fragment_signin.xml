@@ -1,101 +1,90 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="@dimen/main_layout_padding"
-    tools:context=".SignInFragment">
+    android:padding="@dimen/main_layout_padding">
 
-    <ScrollView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/iv_logo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="50dp"
+            android:src="@drawable/logo_anim" />
+
+        <TextView
+            android:id="@+id/textView"
+            style="@style/Header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="15sp"
+            android:gravity="center"
+            android:text="@string/sign_in_title" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/TextLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_sign_in_username"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/username_hint"
+                android:inputType="textPersonName" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/TextLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_sign_in_pass"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/password_hint"
+                android:inputType="textPassword" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <CheckBox
+            android:id="@+id/cb_sign_in_remember"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="15sp"
+            android:text="@string/sign_in_remember_text" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:layout_margin="15sp"
+            android:orientation="horizontal">
 
-            <ImageView
-                android:id="@+id/iv_logo"
+            <Button
+                android:id="@+id/b_sign_in"
+                style="@style/Button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_margin="50dp"
-                android:src="@drawable/logo_anim" />
+                android:layout_weight="1"
+                android:text="@string/sign_in_button_text" />
 
-            <TextView
-                android:id="@+id/textView"
-                style="@style/Header"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="15sp"
-                android:gravity="center"
-                android:text="@string/sign_in_title" />
-
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/TextLayout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/et_sign_in_username"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:hint="@string/username_hint"
-                    android:inputType="textPersonName" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/TextLayout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/et_sign_in_pass"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:hint="@string/password_hint"
-                    android:inputType="textPassword" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <CheckBox
-                android:id="@+id/checkBox"
+            <Button
+                android:id="@+id/b_want_sign_up"
+                style="@style/Button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="15sp"
-                android:text="@string/sign_in_remember_text" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="15sp"
-                android:orientation="horizontal">
-
-                <Button
-                    android:id="@+id/b_sign_in"
-                    style="@style/Button"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/sign_in_button_text" />
-
-                <Button
-                    android:id="@+id/b_want_sign_up"
-                    style="@style/Button"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/go_sign_up_button_text" />
-            </LinearLayout>
-
+                android:layout_weight="1"
+                android:text="@string/go_sign_up_button_text" />
         </LinearLayout>
-    </ScrollView>
 
-
-</LinearLayout>
+    </LinearLayout>
+</ScrollView>

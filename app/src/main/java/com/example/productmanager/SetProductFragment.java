@@ -17,6 +17,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.example.productmanager.model.FireManager;
 import com.example.productmanager.model.ImageConverter;
@@ -37,8 +38,8 @@ public class SetProductFragment extends Fragment {
     private FireManager fm = FireManager.getInstance();
 
     private Bitmap bitmapPhoto;
-    private ImageView productPhoto;
-    private TextInputEditText productName, productCode, productPrice, productDescription;
+    private ImageView etProductPhoto;
+    private TextInputEditText etProductName, etProductCode, etProductPrice, etProductDescription;
     private Button bScanCode, bAddProduct;
     private FloatingActionButton fabTakePhoto;
 
@@ -57,35 +58,23 @@ public class SetProductFragment extends Fragment {
         ((MainActivity) getActivity()).getSupportActionBar().hide();
 
         codeScanner = new ZxingOrient(this);
-        codeScanner.setToolbarColor(getString(R.color.colorAccent))
-                   .setInfoBoxColor(getString(R.color.colorAccent))
-                   .setInfo(getString(R.string.info_scanner));
+        codeScanner.setIcon(R.drawable.ic_launcher_logo)
+                .setToolbarColor(getString(R.color.colorAccent))
+                .setInfoBoxColor(getString(R.color.colorAccent))
+                .setInfo(getString(R.string.info_scanner));
 
         bScanCode = view.findViewById(R.id.b_scan_code);
         bAddProduct = view.findViewById(R.id.b_add_product);
         fabTakePhoto = view.findViewById(R.id.fab_take_photo);
 
-        productName = view.findViewById(R.id.et_add_product_name);
-        productCode = view.findViewById(R.id.et_add_product_code);
-        productPrice = view.findViewById(R.id.et_add_product_price);
-        productPhoto = view.findViewById(R.id.iv_add_product_photo);
-        productDescription = view.findViewById(R.id.et_add_product_description);
+        etProductName = view.findViewById(R.id.et_add_product_name);
+        etProductCode = view.findViewById(R.id.et_add_product_code);
+        etProductPrice = view.findViewById(R.id.et_add_product_price);
+        etProductPhoto = view.findViewById(R.id.iv_add_product_photo);
+        etProductDescription = view.findViewById(R.id.et_add_product_description);
 
         if (getArguments() != null) {
-            Product productToEdit = getArguments().getParcelable("productToEdit");
-
-            productName.setText(productToEdit.getName());
-            productCode.setText(productToEdit.getCode());
-            productPrice.setText(String.valueOf(productToEdit.getPrice()));
-            productDescription.setText(productToEdit.getDescription());
-
-            bScanCode.setEnabled(false);
-            productCode.setEnabled(false);
-
-            if (!productToEdit.getEncodedPhoto().isEmpty()) {
-                bitmapPhoto = ImageConverter.convertBase64ToBitmap(productToEdit.getEncodedPhoto());
-                productPhoto.setImageDrawable(ImageConverter.getCoolBitmapDrawable(bitmapPhoto));
-            }
+            editProduct();
         }
 
         fabTakePhoto.setOnClickListener(new View.OnClickListener() {
@@ -103,23 +92,68 @@ public class SetProductFragment extends Fragment {
             }
         });
 
-        bAddProduct.setOnClickListener(new View.OnClickListener() {
+        bAddProduct.setOnClickListener(addProduct());
+
+        return view;
+    }
+
+    private void editProduct() {
+        Product productToEdit = getArguments().getParcelable("productToEdit");
+
+        etProductName.setText(productToEdit.getName());
+        etProductCode.setText(productToEdit.getCode());
+        etProductPrice.setText(String.valueOf(productToEdit.getPrice()));
+        etProductDescription.setText(productToEdit.getDescription());
+
+        bScanCode.setEnabled(false);
+        etProductCode.setEnabled(false);
+
+        if (!productToEdit.getEncodedPhoto().isEmpty()) {
+            bitmapPhoto = ImageConverter.convertBase64ToBitmap(productToEdit.getEncodedPhoto());
+            etProductPhoto.setImageDrawable(ImageConverter.getCoolBitmapDrawable(bitmapPhoto));
+        }
+    }
+
+    private View.OnClickListener addProduct() {
+        return new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                String encodedBitmap = bitmapPhoto != null
+                        ? ImageConverter.convertBitmapToBase64(bitmapPhoto)
+                        : "";
+                String productName = etProductName.getText().toString();
+                String productCode = etProductCode.getText().toString();
+                String productDescription = etProductDescription.getText().toString();
+                String dataProductPrice = etProductPrice.getText().toString();
+
+                if (isSomethingEmpty(productName, productCode, dataProductPrice)) {
+                    Toast.makeText(getContext(),
+                            R.string.uncompleted_fields_message,
+                            Toast.LENGTH_LONG).show();
+                    return;
+                }
+
+                float productPrice = Float.parseFloat(dataProductPrice);
+
                 Product newProduct = new Product(
-                        bitmapPhoto != null ? ImageConverter.convertBitmapToBase64(bitmapPhoto) : "",
-                        productName.getText().toString(),
-                        productCode.getText().toString(),
-                        productDescription.getText().toString(),
-                        Float.parseFloat(productPrice.getText().toString())
+                        encodedBitmap,
+                        productName,
+                        productCode,
+                        productDescription,
+                        productPrice
                 );
 
                 fm.setProduct(newProduct);
                 Navigation.findNavController(view).popBackStack();
             }
-        });
 
-        return view;
+            private boolean isSomethingEmpty(String... data) {
+                for (String chunk : data)
+                    if (chunk.isEmpty()) return true;
+
+                return false;
+            }
+        };
     }
 
 
@@ -134,7 +168,7 @@ public class SetProductFragment extends Fragment {
 
                 if (result == null) return;
 
-                productCode.setText(result.getContents());
+                etProductCode.setText(result.getContents());
                 break;
             }
             case TAKE_PHOTO_REQUEST_CODE: {
@@ -142,7 +176,7 @@ public class SetProductFragment extends Fragment {
                 RoundedBitmapDrawable coolPhoto =
                         ImageConverter.getCoolBitmapDrawable(bitmapPhoto);
 
-                productPhoto.setImageDrawable(coolPhoto);
+                etProductPhoto.setImageDrawable(coolPhoto);
                 break;
             }
         }

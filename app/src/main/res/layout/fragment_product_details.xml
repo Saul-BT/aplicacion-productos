@@ -102,7 +102,7 @@
             android:text="@string/opinions_title" />
 
         <ImageButton
-            android:id="@+id/ib_expand_opinions"
+            android:id="@+id/iv_expand_opinions"
             style="@style/SimpleActionButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -134,7 +134,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="@string/opinion_input_message"
+                android:hint="@string/opinion_hint"
                 android:inputType="textPersonName" />
 
         </com.google.android.material.textfield.TextInputLayout>

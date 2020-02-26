@@ -16,6 +16,7 @@ import com.example.productmanager.MainActivity;
 import com.example.productmanager.R;
 import com.example.productmanager.model.FireManager;
 import com.example.productmanager.model.User;
+import com.example.productmanager.model.UserSession;
 import com.example.productmanager.model.UserType;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentReference;
@@ -56,7 +57,7 @@ public class AdapterUsers extends RecyclerView.Adapter<AdapterUsers.UsersHolder>
     @Override
     public void onBindViewHolder(@NonNull final UsersHolder holder, final int position) {
         holder.user = this.users.get(position);
-        UserType currentUserType = MainActivity.currentUser.getType();
+        UserType currentUserType = UserSession.currentUser.getType();
 
         if (currentUserType.canManageAdmins) {
             holder.bPromoteToAdmin.setImageDrawable(getShield(holder.user));
