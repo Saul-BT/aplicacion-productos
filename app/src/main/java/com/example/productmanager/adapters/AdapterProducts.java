@@ -21,10 +21,8 @@ import com.example.productmanager.R;
 import com.example.productmanager.model.ImageConverter;
 import com.example.productmanager.model.Product;
 
-import java.text.Collator;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class AdapterProducts extends RecyclerView.Adapter<AdapterProducts.ProductsHolder> implements Filterable {
@@ -93,7 +91,6 @@ public class AdapterProducts extends RecyclerView.Adapter<AdapterProducts.Produc
     }
 
     public void setProducts(List<Product> products) {
-        Collections.sort(products);
         this.products = products;
         this.allProducts = new ArrayList<>(products);
         notifyDataSetChanged();

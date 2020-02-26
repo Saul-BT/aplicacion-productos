@@ -103,7 +103,7 @@ public class ProductsFragment extends Fragment {
         productsAdapter = new AdapterProducts(getActivity(), R.layout.product_view, new ArrayList<Product>());
         recyclerView.setAdapter(productsAdapter);
 
-        fm.dbProductsRef.get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+        fm.dbProductsRef.orderBy("price").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
             @Override
             public void onSuccess(QuerySnapshot documents) {
                 List<Product> products = new ArrayList<>();

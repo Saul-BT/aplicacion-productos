@@ -5,7 +5,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.Nullable;
 
-public class Product implements Parcelable, Comparable<Product> {
+public class Product implements Parcelable {
     private String encodedPhoto;
     private String name;
     private String code;
@@ -107,18 +107,4 @@ public class Product implements Parcelable, Comparable<Product> {
             return new Product[size];
         }
     };
-
-    @Override
-    public int compareTo(Product product) {
-        int[] compares = {
-                this.price.compareTo(product.price),
-                this.name.compareTo(product.name)
-        };
-
-        for (int compare : compares) {
-            if (compare != 0) return compare;
-        }
-
-        return 0;
-    }
 }
